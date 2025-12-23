@@ -1,0 +1,86 @@
+[versions]
+slf4j = "2.0.17"
+jspecify = "1.0.0"
+
+spring-boot-dependencies = "4.0.0"
+spring-cloud-dependencies = "2025.1.0"
+spring-cloud-commons-dependencies = "5.0.0"
+
+grpc = "1.77.0"
+protobuf-java = "4.33.2"
+
+nacos-client = "3.0.3"
+
+logback = "1.5.20"
+junit-bom = "6.0.1"
+testcontainers = "2.0.1"
+
+central-publish = "0.34.0"
+protobuf-plugin = "0.9.6"
+
+[libraries.slf4j-api]
+module = "org.slf4j:slf4j-api"
+version.ref = "slf4j"
+
+[libraries.jspecify]
+module = "org.jspecify:jspecify"
+version.ref = "jspecify"
+
+[libraries.spring-boot-dependencies]
+module = "org.springframework.boot:spring-boot-dependencies"
+version.ref = "spring-boot-dependencies"
+
+[libraries.spring-cloud-dependencies]
+module = "org.springframework.cloud:spring-cloud-dependencies"
+version.ref = "spring-cloud-dependencies"
+
+[libraries.spring-cloud-commons-dependencies]
+module = "org.springframework.cloud:spring-cloud-commons-dependencies"
+version.ref = "spring-cloud-commons-dependencies"
+
+[libraries.grpc-protobuf]
+module = "io.grpc:grpc-protobuf"
+version.ref = "grpc"
+
+[libraries.grpc-stub]
+module = "io.grpc:grpc-stub"
+version.ref = "grpc"
+
+[libraries.grpc-netty]
+module = "io.grpc:grpc-netty"
+version.ref = "grpc"
+
+[libraries.grpc-util]
+module = "io.grpc:grpc-util"
+version.ref = "grpc"
+
+[libraries.protobuf-java]
+module = "com.google.protobuf:protobuf-java"
+version.ref = "protobuf-java"
+
+[libraries.nacos-client]
+module = "com.alibaba.nacos:nacos-client"
+version.ref = "nacos-client"
+
+[libraries.logback-classic]
+module = "ch.qos.logback:logback-classic"
+version.ref = "logback"
+
+[libraries.junit-bom]
+module = "org.junit:junit-bom"
+version.ref = "junit-bom"
+
+[libraries.testcontainers]
+module = "org.testcontainers:testcontainers-bom"
+version.ref = "testcontainers"
+
+[bundles]
+grpc = ["grpc-protobuf", "grpc-stub", "grpc-netty", "grpc-util"]
+
+[plugins.publish]
+id = "com.vanniktech.maven.publish"
+version.ref = "central-publish"
+
+[plugins.protobuf]
+id = "com.google.protobuf"
+version.ref = "protobuf-plugin"

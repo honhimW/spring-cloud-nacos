@@ -1,0 +1,15 @@
+plugins {
+    id 'io.github.honhimw.publish'
+}
+
+version = '0.0.1'
+description = 'Spring Cloud Starter Nacos Config'
+
+dependencies {
+    using platform(libs.spring.boot.dependencies.get())
+    using platform(libs.spring.cloud.commons.dependencies.get())
+
+	api project(':spring-cloud-nacos-core') exclude group: 'io.grpc', module: 'grpc-netty-shaded'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

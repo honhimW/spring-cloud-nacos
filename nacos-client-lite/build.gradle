@@ -1,0 +1,55 @@
+plugins {
+	id 'io.github.honhimw.publish'
+	alias libs.plugins.protobuf
+	id 'io.github.honhimw.buildConfig'
+}
+
+version = '0.0.1'
+description = 'Nacos Client Lite, remove useless code.'
+
+dependencies {
+	using platform(libs.spring.boot.dependencies.get())
+
+	compileOnly libs.slf4j.api
+	compileOnly libs.jspecify
+
+	implementation libs.bundles.grpc
+	implementation libs.protobuf.java
+
+	implementation 'com.fasterxml.jackson.core:jackson-annotations'
+	implementation 'tools.jackson.core:jackson-core'
+	implementation 'tools.jackson.core:jackson-databind'
+	implementation 'org.apache.httpcomponents.client5:httpclient5'
+	implementation 'io.prometheus:simpleclient'
+	implementation 'org.yaml:snakeyaml'
+	implementation 'io.micrometer:micrometer-core'
+}
+
+protobuf {
+	protoc {
+		artifact = "com.google.protobuf:protoc:${libs.versions.protobuf.java.get()}"
+	}
+	plugins {
+		grpc {
+			artifact = 'io.grpc:protoc-gen-grpc-java:1.77.0'
+		}
+	}
+	generateProtoTasks {
+		all()*.plugins {
+			grpc {}
+		}
+	}
+}
+
+buildConfig {
+	def ver = project.version as String
+	def versionParts = ver.split('\\.')
+	def _tokens = [
+		version: ver,
+		major: versionParts[0],
+		minor: versionParts[1],
+		patch: versionParts[2]
+	]
+	packageName = 'com.alibaba.nacos'
+	tokens = _tokens
+}

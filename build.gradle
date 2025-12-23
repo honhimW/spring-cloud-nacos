@@ -1,0 +1,8 @@
+def libraries = subprojects.findAll {
+    it.buildFile.exists()
+}
+
+configure(libraries) {
+    group = 'io.github.honhimw'
+    pluginManager.apply 'io.github.honhimw.library'
+}

@@ -1,0 +1,13 @@
+plugins {
+    id 'io.github.honhimw.publish'
+}
+
+version = '0.0.1'
+description = 'Spring Cloud Starter Nacos Discovery'
+
+dependencies {
+    using platform(libs.spring.cloud.dependencies.get())
+
+    compileOnly libs.slf4j.api
+    compileOnly libs.jspecify
+}
