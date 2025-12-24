@@ -1,0 +1,18 @@
+# Bootstrap Configuration
+org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+io.github.honhimw.scn.config.NacosConfigBootstrapConfiguration
+
+# Environment PostProcessor
+org.springframework.boot.EnvironmentPostProcessor=\
+io.github.honhimw.scn.config.NacosConfigDataMissingEnvironmentPostProcessor
+
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+io.github.honhimw.scn.config.NacosConfigDataMissingEnvironmentPostProcessor.ImportExceptionFailureAnalyzer
+
+# ConfigData Location Resolvers
+org.springframework.boot.context.config.ConfigDataLocationResolver=\
+io.github.honhimw.scn.config.configdata.NacosConfigDataLocationResolver
+
+# ConfigData Loaders
+org.springframework.boot.context.config.ConfigDataLoader=\
+io.github.honhimw.scn.config.configdata.NacosConfigDataLoader

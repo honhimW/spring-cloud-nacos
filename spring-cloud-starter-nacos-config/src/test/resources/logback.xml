@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<charset>UTF-8</charset>
+			<!-- @formatter:off -->
+			<Pattern>%red(%d{HH:mm:ss.SSS}) %highlight(%.-1level) %magenta([%thread]) %cyan(%logger{36}:%line) %yellow(-) %msg%n</Pattern>
+			<!-- @formatter:on -->
+		</encoder>
+	</appender>
+
+	<logger name="ch.qos.logback" level="ERROR"/>
+
+	<root level="INFO">
+		<appender-ref ref="stdout"/>
+	</root>
+</configuration> 

@@ -1,13 +1,13 @@
 package io.github.honhimw.scn;
 
-import com.alibaba.nacos.api.NacosFactory;
-import com.alibaba.nacos.api.PropertyKeyConst;
-import com.alibaba.nacos.api.config.ConfigService;
-import com.alibaba.nacos.api.config.listener.Listener;
+import io.github.honhimw.nacos.api.NacosFactory;
+import io.github.honhimw.nacos.api.PropertyKeyConst;
+import io.github.honhimw.nacos.api.config.ConfigService;
+import io.github.honhimw.nacos.api.config.listener.AbstractListener;
+import io.github.honhimw.nacos.api.config.listener.Listener;
 import org.junit.jupiter.api.Test;
 
 import java.util.Properties;
-import java.util.concurrent.Executor;
 
 /// @author honhimW
 /// @since 2025-12-22
@@ -21,12 +21,7 @@ public class SDKTests {
 		properties.put(PropertyKeyConst.PASSWORD, "nacos");
 		properties.put(PropertyKeyConst.NAMESPACE, "dev");
 		ConfigService configService = NacosFactory.createConfigService(properties);
-		Listener listener = new Listener() {
-			@Override
-			public Executor getExecutor() {
-				return null;
-			}
-
+		Listener listener = new AbstractListener() {
 			@Override
 			public void receiveConfigInfo(String configInfo) {
 				System.out.println(configInfo);

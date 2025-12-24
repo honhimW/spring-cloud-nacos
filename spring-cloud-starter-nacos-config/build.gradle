@@ -9,7 +9,10 @@ dependencies {
     using platform(libs.spring.boot.dependencies.get())
     using platform(libs.spring.cloud.commons.dependencies.get())
 
-	api project(':spring-cloud-nacos-core') exclude group: 'io.grpc', module: 'grpc-netty-shaded'
+	api project(':spring-cloud-nacos-core')
+	compileOnly 'org.springframework.boot:spring-boot-starter-actuator'
 
+	testRuntimeOnly libs.logback.classic
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-web'
 }

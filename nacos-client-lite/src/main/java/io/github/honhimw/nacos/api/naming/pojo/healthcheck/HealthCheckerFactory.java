@@ -1,0 +1,88 @@
+/*
+ * Copyright 1999-2018 Alibaba Group Holding Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package io.github.honhimw.nacos.api.naming.pojo.healthcheck;
+
+import io.github.honhimw.nacos.api.naming.pojo.healthcheck.AbstractHealthChecker.None;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.jsontype.NamedType;
+
+/**
+ * health checker factory.
+ *
+ * @author yangyi
+ */
+public class HealthCheckerFactory {
+    
+    private static ObjectMapper MAPPER;
+    
+    static {
+		MAPPER = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.build();
+    }
+    
+    /**
+     * Register new sub type of health checker to factory for serialize and deserialize.
+     *
+     * @param extendHealthChecker extend health checker
+     */
+    public static void registerSubType(AbstractHealthChecker extendHealthChecker) {
+        registerSubType(extendHealthChecker.getClass(), extendHealthChecker.getType());
+    }
+    
+    /**
+     * Register new sub type of health checker to factory for serialize and deserialize.
+     *
+     * @param extendHealthCheckerClass extend health checker
+     * @param typeName                 typeName of health checker
+     */
+    public static void registerSubType(Class<? extends AbstractHealthChecker> extendHealthCheckerClass,
+            String typeName) {
+		MAPPER = MAPPER.rebuild().registerSubtypes(new NamedType(extendHealthCheckerClass, typeName)).build();
+    }
+    
+    /**
+     * Create default {@link None} health checker.
+     *
+     * @return new none health checker
+     */
+    public static None createNoneHealthChecker() {
+        return new None();
+    }
+    
+    /**
+     * Deserialize and create an instance of health checker.
+     *
+     * @param jsonString json string of health checker
+     * @return new instance
+     */
+    public static AbstractHealthChecker deserialize(String jsonString) {
+		return MAPPER.readValue(jsonString, AbstractHealthChecker.class);
+    }
+    
+    /**
+     * Serialize an instance of health checker to json.
+     *
+     * @param healthChecker health checker instance
+     * @return son string after serializing
+     */
+    public static String serialize(AbstractHealthChecker healthChecker) {
+		return MAPPER.writeValueAsString(healthChecker);
+    }
+}

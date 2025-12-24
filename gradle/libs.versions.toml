@@ -11,6 +11,8 @@ protobuf-java = "4.33.2"
 
 nacos-client = "3.0.3"
 
+lombok = "1.18.42"
+jetbrains-annotations = "26.0.2-1"
 logback = "1.5.20"
 junit-bom = "6.0.1"
 testcontainers = "2.0.1"
@@ -58,9 +60,13 @@ version.ref = "grpc"
 module = "com.google.protobuf:protobuf-java"
 version.ref = "protobuf-java"
 
-[libraries.nacos-client]
-module = "com.alibaba.nacos:nacos-client"
-version.ref = "nacos-client"
+[libraries.lombok]
+module = "org.projectlombok:lombok"
+version.ref = "lombok"
+
+[libraries.jetbrains-annotations]
+module = "org.jetbrains:annotations"
+version.ref = "jetbrains-annotations"
 
 [libraries.logback-classic]
 module = "ch.qos.logback:logback-classic"

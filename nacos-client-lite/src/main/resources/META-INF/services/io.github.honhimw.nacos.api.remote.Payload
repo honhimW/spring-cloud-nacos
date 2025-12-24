@@ -1,0 +1,76 @@
+#
+#  Copyright 1999-2021 Alibaba Group Holding Ltd.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+#
+io.github.honhimw.nacos.api.remote.request.ClientDetectionRequest
+io.github.honhimw.nacos.api.remote.request.ConnectionSetupRequest
+io.github.honhimw.nacos.api.remote.request.ConnectResetRequest
+io.github.honhimw.nacos.api.remote.request.HealthCheckRequest
+io.github.honhimw.nacos.api.remote.request.PushAckRequest
+io.github.honhimw.nacos.api.remote.request.ServerCheckRequest
+io.github.honhimw.nacos.api.remote.request.ServerLoaderInfoRequest
+io.github.honhimw.nacos.api.remote.request.ServerReloadRequest
+io.github.honhimw.nacos.api.remote.request.SetupAckRequest
+io.github.honhimw.nacos.api.remote.response.SetupAckResponse
+io.github.honhimw.nacos.api.remote.response.ClientDetectionResponse
+io.github.honhimw.nacos.api.remote.response.ConnectResetResponse
+io.github.honhimw.nacos.api.remote.response.ErrorResponse
+io.github.honhimw.nacos.api.remote.response.HealthCheckResponse
+io.github.honhimw.nacos.api.remote.response.ServerCheckResponse
+io.github.honhimw.nacos.api.remote.response.ServerLoaderInfoResponse
+io.github.honhimw.nacos.api.remote.response.ServerReloadResponse
+io.github.honhimw.nacos.api.config.remote.request.ClientConfigMetricRequest
+io.github.honhimw.nacos.api.config.remote.request.ConfigBatchListenRequest
+io.github.honhimw.nacos.api.config.remote.request.ConfigChangeNotifyRequest
+io.github.honhimw.nacos.api.config.remote.request.ConfigPublishRequest
+io.github.honhimw.nacos.api.config.remote.request.ConfigQueryRequest
+io.github.honhimw.nacos.api.config.remote.request.ConfigRemoveRequest
+io.github.honhimw.nacos.api.config.remote.response.ClientConfigMetricResponse
+io.github.honhimw.nacos.api.config.remote.response.ConfigChangeBatchListenResponse
+io.github.honhimw.nacos.api.config.remote.response.ConfigChangeNotifyResponse
+io.github.honhimw.nacos.api.config.remote.response.ConfigPublishResponse
+io.github.honhimw.nacos.api.config.remote.response.ConfigQueryResponse
+io.github.honhimw.nacos.api.config.remote.response.ConfigRemoveResponse
+io.github.honhimw.nacos.api.config.remote.request.cluster.ConfigChangeClusterSyncRequest
+io.github.honhimw.nacos.api.config.remote.response.cluster.ConfigChangeClusterSyncResponse
+io.github.honhimw.nacos.api.config.remote.request.ConfigFuzzyWatchRequest
+io.github.honhimw.nacos.api.config.remote.response.ConfigFuzzyWatchResponse
+io.github.honhimw.nacos.api.config.remote.request.ConfigFuzzyWatchChangeNotifyRequest
+io.github.honhimw.nacos.api.config.remote.response.ConfigFuzzyWatchChangeNotifyResponse
+io.github.honhimw.nacos.api.config.remote.response.ConfigFuzzyWatchSyncResponse
+io.github.honhimw.nacos.api.config.remote.request.ConfigFuzzyWatchSyncRequest
+
+io.github.honhimw.nacos.api.naming.remote.request.BatchInstanceRequest
+io.github.honhimw.nacos.api.naming.remote.request.InstanceRequest
+io.github.honhimw.nacos.api.naming.remote.request.PersistentInstanceRequest
+io.github.honhimw.nacos.api.naming.remote.request.NotifySubscriberRequest
+io.github.honhimw.nacos.api.naming.remote.request.ServiceListRequest
+io.github.honhimw.nacos.api.naming.remote.request.ServiceQueryRequest
+io.github.honhimw.nacos.api.naming.remote.request.SubscribeServiceRequest
+io.github.honhimw.nacos.api.naming.remote.response.BatchInstanceResponse
+io.github.honhimw.nacos.api.naming.remote.response.InstanceResponse
+io.github.honhimw.nacos.api.naming.remote.response.NotifySubscriberResponse
+io.github.honhimw.nacos.api.naming.remote.response.QueryServiceResponse
+io.github.honhimw.nacos.api.naming.remote.response.ServiceListResponse
+io.github.honhimw.nacos.api.naming.remote.response.SubscribeServiceResponse
+io.github.honhimw.nacos.api.naming.remote.request.NamingFuzzyWatchRequest
+io.github.honhimw.nacos.api.naming.remote.response.NamingFuzzyWatchResponse
+io.github.honhimw.nacos.api.naming.remote.request.NamingFuzzyWatchChangeNotifyRequest
+io.github.honhimw.nacos.api.naming.remote.response.NamingFuzzyWatchChangeNotifyResponse
+io.github.honhimw.nacos.api.naming.remote.request.NamingFuzzyWatchSyncRequest
+io.github.honhimw.nacos.api.naming.remote.response.NamingFuzzyWatchSyncResponse
+
+io.github.honhimw.nacos.api.lock.remote.request.LockOperationRequest
+io.github.honhimw.nacos.api.lock.remote.response.LockOperationResponse
