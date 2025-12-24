@@ -3,6 +3,7 @@ def libraries = subprojects.findAll {
 }
 
 configure(libraries) {
+	version = libs.versions.version.get()
     group = 'io.github.honhimw'
     pluginManager.apply 'io.github.honhimw.library'
 }

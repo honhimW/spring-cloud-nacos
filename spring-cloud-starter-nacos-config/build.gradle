@@ -2,7 +2,6 @@ plugins {
     id 'io.github.honhimw.publish'
 }
 
-version = '0.0.1'
 description = 'Spring Cloud Starter Nacos Config'
 
 dependencies {

@@ -1,4 +1,5 @@
 [versions]
+version = "2025.1.0.0"
 slf4j = "2.0.17"
 jspecify = "1.0.0"
 

@@ -2,12 +2,20 @@ plugins {
     id 'io.github.honhimw.publish'
 }
 
-version = '0.0.1'
 description = 'Spring Cloud Starter Nacos Discovery'
 
 dependencies {
-    using platform(libs.spring.cloud.dependencies.get())
+	using platform(libs.spring.boot.dependencies.get())
+	using platform(libs.spring.cloud.dependencies.get())
+	using platform(libs.spring.cloud.commons.dependencies.get())
 
-    compileOnly libs.slf4j.api
-    compileOnly libs.jspecify
+	api project(':spring-cloud-nacos-core')
+	compileOnly 'org.springframework.boot:spring-boot-starter-actuator'
+	compileOnly 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+	compileOnly 'org.springframework.cloud:spring-cloud-config-server'
+	compileOnly 'io.projectreactor:reactor-core'
+
+	testRuntimeOnly libs.logback.classic
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-web'
 }

@@ -1,0 +1,2024 @@
+[
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcConnection"
+    },
+    "name": "io.github.honhimw.nacos.api.ability.ClientAbilities",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "getConfigAbility",
+        "parameterTypes": []
+      },
+      {
+        "name": "getNamingAbility",
+        "parameterTypes": []
+      },
+      {
+        "name": "getRemoteAbility",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcConnection"
+    },
+    "name": "io.github.honhimw.nacos.api.config.ability.ClientConfigAbility",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "isSupportRemoteMetrics",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.AbstractConfigRequest",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.RpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.AbstractConfigRequest",
+    "methods": [
+      {
+        "name": "getModule",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.gson.Gson"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.AbstractConfigRequest",
+    "allDeclaredFields": true
+  },
+  {
+    "condition": {
+      "typeReachable": "org.springframework.boot.support.EnvironmentPostProcessorApplicationListener"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.AbstractConfigRequest",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.ConfigBatchListenRequest",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "getConfigListenContexts",
+        "parameterTypes": []
+      },
+      {
+        "name": "isListen",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.gson.internal.bind.CollectionTypeAdapterFactory"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.ConfigBatchListenRequest$ConfigListenContext",
+    "allDeclaredFields": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.fasterxml.jackson.databind.SerializerProvider"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.ConfigBatchListenRequest$ConfigListenContext",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true
+  },
+  {
+    "condition": {
+      "typeReachable": "com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.ConfigBatchListenRequest$ConfigListenContext",
+    "methods": [
+      {
+        "name": "getDataId",
+        "parameterTypes": []
+      },
+      {
+        "name": "getGroup",
+        "parameterTypes": []
+      },
+      {
+        "name": "getMd5",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTenant",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcClient$1"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.ConfigChangeNotifyRequest",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "setDataId",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setGroup",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.ConfigQueryRequest",
+    "allDeclaredFields": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "getDataId",
+        "parameterTypes": []
+      },
+      {
+        "name": "getGroup",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTag",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTenant",
+        "parameterTypes": []
+      },
+      {
+        "name": "isNotify",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "org.springframework.boot.support.EnvironmentPostProcessorApplicationListener"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.request.ConfigQueryRequest",
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.response.ConfigChangeBatchListenResponse",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "setChangedConfigs",
+        "parameterTypes": [
+          "java.util.List"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.fasterxml.jackson.databind.DeserializationContext"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.response.ConfigChangeBatchListenResponse$ConfigContext",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true
+  },
+  {
+    "condition": {
+      "typeReachable": "com.fasterxml.jackson.databind.deser.std.CollectionDeserializer"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.response.ConfigChangeBatchListenResponse$ConfigContext",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "setDataId",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setGroup",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setTenant",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcUtils"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.response.ConfigChangeNotifyResponse",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.response.ConfigQueryResponse",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "setBeta",
+        "parameterTypes": [
+          "boolean"
+        ]
+      },
+      {
+        "name": "setContent",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setContentType",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setLastModified",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "setMd5",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "org.springframework.boot.support.EnvironmentPostProcessorApplicationListener"
+    },
+    "name": "io.github.honhimw.nacos.api.config.remote.response.ConfigQueryResponse",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.api.grpc.auto.Metadata"
+    },
+    "name": "io.github.honhimw.nacos.api.grpc.auto.Metadata",
+    "methods": [
+      {
+        "name": "getClientIp",
+        "parameterTypes": []
+      },
+      {
+        "name": "getClientIpBytes",
+        "parameterTypes": []
+      },
+      {
+        "name": "getType",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTypeBytes",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.GeneratedMessageV3$FieldAccessorTable$MapFieldAccessor"
+    },
+    "name": "io.github.honhimw.nacos.api.grpc.auto.Metadata",
+    "methods": [
+      {
+        "name": "getDefaultInstance",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.GeneratedMessageV3$FieldAccessorTable$SingularMessageFieldAccessor"
+    },
+    "name": "io.github.honhimw.nacos.api.grpc.auto.Metadata",
+    "methods": [
+      {
+        "name": "newBuilder",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.TextFormat$Printer"
+    },
+    "name": "io.github.honhimw.nacos.api.grpc.auto.Metadata",
+    "methods": [
+      {
+        "name": "getClientIp",
+        "parameterTypes": []
+      },
+      {
+        "name": "getType",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.api.grpc.auto.Metadata"
+    },
+    "name": "io.github.honhimw.nacos.api.grpc.auto.Metadata$Builder",
+    "methods": [
+      {
+        "name": "clearClientIp",
+        "parameterTypes": []
+      },
+      {
+        "name": "clearType",
+        "parameterTypes": []
+      },
+      {
+        "name": "getClientIp",
+        "parameterTypes": []
+      },
+      {
+        "name": "getClientIpBytes",
+        "parameterTypes": []
+      },
+      {
+        "name": "getType",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTypeBytes",
+        "parameterTypes": []
+      },
+      {
+        "name": "setClientIp",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setClientIpBytes",
+        "parameterTypes": [
+          "com.google.protobuf.ByteString"
+        ]
+      },
+      {
+        "name": "setType",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setTypeBytes",
+        "parameterTypes": [
+          "com.google.protobuf.ByteString"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.GeneratedMessageV3$FieldAccessorTable$SingularFieldAccessor$ReflectionInvoker"
+    },
+    "name": "io.github.honhimw.nacos.api.grpc.auto.Payload",
+    "methods": [
+      {
+        "name": "hasBody",
+        "parameterTypes": []
+      },
+      {
+        "name": "hasMetadata",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.GeneratedMessageV3$FieldAccessorTable$SingularMessageFieldAccessor"
+    },
+    "name": "io.github.honhimw.nacos.api.grpc.auto.Payload",
+    "methods": [
+      {
+        "name": "getBody",
+        "parameterTypes": []
+      },
+      {
+        "name": "getMetadata",
+        "parameterTypes": []
+      },
+      {
+        "name": "hasBody",
+        "parameterTypes": []
+      },
+      {
+        "name": "hasMetadata",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.TextFormat$Printer"
+    },
+    "name": "io.github.honhimw.nacos.api.grpc.auto.Payload",
+    "methods": [
+      {
+        "name": "getBody",
+        "parameterTypes": []
+      },
+      {
+        "name": "getMetadata",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.GeneratedMessageV3$FieldAccessorTable$SingularMessageFieldAccessor"
+    },
+    "name": "io.github.honhimw.nacos.api.grpc.auto.Payload$Builder",
+    "methods": [
+      {
+        "name": "clearBody",
+        "parameterTypes": []
+      },
+      {
+        "name": "clearMetadata",
+        "parameterTypes": []
+      },
+      {
+        "name": "getBody",
+        "parameterTypes": []
+      },
+      {
+        "name": "getBodyBuilder",
+        "parameterTypes": []
+      },
+      {
+        "name": "getMetadata",
+        "parameterTypes": []
+      },
+      {
+        "name": "getMetadataBuilder",
+        "parameterTypes": []
+      },
+      {
+        "name": "hasBody",
+        "parameterTypes": []
+      },
+      {
+        "name": "hasMetadata",
+        "parameterTypes": []
+      },
+      {
+        "name": "setBody",
+        "parameterTypes": [
+          "com.google.protobuf.Any"
+        ]
+      },
+      {
+        "name": "setMetadata",
+        "parameterTypes": [
+          "io.github.honhimw.nacos.api.grpc.auto.Metadata"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcConnection"
+    },
+    "name": "io.github.honhimw.nacos.api.naming.ability.ClientNamingAbility",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "isSupportDeltaPush",
+        "parameterTypes": []
+      },
+      {
+        "name": "isSupportRemoteMetric",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.Payload",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.RpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.Payload",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.Payload",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcClient$1"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.Payload",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcConnection"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.Payload",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcUtils"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.Payload",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "com.fasterxml.jackson.databind.DeserializationContext"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.Payload"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.fasterxml.jackson.databind.ObjectMapper"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.Payload"
+  },
+  {
+    "condition": {
+      "typeReachable": "org.springframework.boot.support.EnvironmentPostProcessorApplicationListener"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.Payload",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcConnection"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.ability.ClientRemoteAbility",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "isSupportRemoteConnection",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcConnection"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.ConnectionSetupRequest",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "getAbilities",
+        "parameterTypes": []
+      },
+      {
+        "name": "getClientVersion",
+        "parameterTypes": []
+      },
+      {
+        "name": "getLabels",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTenant",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.RpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.HealthCheckRequest",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.RpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.InternalRequest",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "getModule",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.InternalRequest",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "getModule",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcConnection"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.InternalRequest",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "getModule",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.Request",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.RpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.Request",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.Request",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcClient$1"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.Request",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "setRequestId",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcConnection"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.Request",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcUtils"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.Request",
+    "methods": [
+      {
+        "name": "getHeaders",
+        "parameterTypes": []
+      },
+      {
+        "name": "getRequestId",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.gson.Gson"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.Request",
+    "allDeclaredFields": true
+  },
+  {
+    "condition": {
+      "typeReachable": "org.springframework.boot.support.EnvironmentPostProcessorApplicationListener"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.Request",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.ServerCheckRequest",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcClient$1"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.request.ServerRequest",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.RpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.response.HealthCheckResponse",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.response.Response",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.RpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.response.Response",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.response.Response",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "setErrorCode",
+        "parameterTypes": [
+          "int"
+        ]
+      },
+      {
+        "name": "setResultCode",
+        "parameterTypes": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcConnection"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.response.Response",
+    "methods": [
+      {
+        "name": "setErrorCode",
+        "parameterTypes": [
+          "int"
+        ]
+      },
+      {
+        "name": "setResultCode",
+        "parameterTypes": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcUtils"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.response.Response",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "getErrorCode",
+        "parameterTypes": []
+      },
+      {
+        "name": "getMessage",
+        "parameterTypes": []
+      },
+      {
+        "name": "getRequestId",
+        "parameterTypes": []
+      },
+      {
+        "name": "getResultCode",
+        "parameterTypes": []
+      },
+      {
+        "name": "isSuccess",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "org.springframework.boot.support.EnvironmentPostProcessorApplicationListener"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.response.Response",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.remote.client.grpc.GrpcClient"
+    },
+    "name": "io.github.honhimw.nacos.api.remote.response.ServerCheckResponse",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "setConnectionId",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.api.config.ConfigFactory"
+    },
+    "name": "io.github.honhimw.nacos.client.config.NacosConfigService",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.util.Properties"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.github.honhimw.nacos.common.spi.NacosServiceLoader"
+    },
+    "name": "io.github.honhimw.nacos.client.logging.logback.NacosLogbackConfiguratorAdapterV1",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.fasterxml.jackson.databind.ObjectMapper"
+    },
+    "name": "io.github.honhimw.nacos.common.remote.TlsConfig",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "getCertChainFile",
+        "parameterTypes": []
+      },
+      {
+        "name": "getCertPrivateKey",
+        "parameterTypes": []
+      },
+      {
+        "name": "getCertPrivateKeyPassword",
+        "parameterTypes": []
+      },
+      {
+        "name": "getCiphers",
+        "parameterTypes": []
+      },
+      {
+        "name": "getEnableTls",
+        "parameterTypes": []
+      },
+      {
+        "name": "getMutualAuthEnable",
+        "parameterTypes": []
+      },
+      {
+        "name": "getProtocols",
+        "parameterTypes": []
+      },
+      {
+        "name": "getSslProvider",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTrustAll",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTrustCollectionCertFile",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.fasterxml.jackson.databind.ObjectMapper"
+    },
+    "name": "io.github.honhimw.nacos.common.remote.client.RpcClientTlsConfig",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper"
+    },
+    "name": "com.google.common.util.concurrent.AbstractFuture",
+    "fields": [
+      {
+        "name": "listeners"
+      },
+      {
+        "name": "value"
+      },
+      {
+        "name": "waiters"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper"
+    },
+    "name": "com.google.common.util.concurrent.AbstractFuture$Waiter",
+    "fields": [
+      {
+        "name": "next"
+      },
+      {
+        "name": "thread"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.Any"
+    },
+    "name": "com.google.protobuf.Any",
+    "methods": [
+      {
+        "name": "getTypeUrl",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTypeUrlBytes",
+        "parameterTypes": []
+      },
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.GeneratedMessageV3$FieldAccessorTable$SingularMessageFieldAccessor"
+    },
+    "name": "com.google.protobuf.Any",
+    "methods": [
+      {
+        "name": "newBuilder",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.TextFormat$Printer"
+    },
+    "name": "com.google.protobuf.Any",
+    "methods": [
+      {
+        "name": "getTypeUrl",
+        "parameterTypes": []
+      },
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.Any"
+    },
+    "name": "com.google.protobuf.Any$Builder",
+    "methods": [
+      {
+        "name": "clearTypeUrl",
+        "parameterTypes": []
+      },
+      {
+        "name": "clearValue",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTypeUrl",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTypeUrlBytes",
+        "parameterTypes": []
+      },
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      },
+      {
+        "name": "setTypeUrl",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setTypeUrlBytes",
+        "parameterTypes": [
+          "com.google.protobuf.ByteString"
+        ]
+      },
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "com.google.protobuf.ByteString"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.ExtensionRegistryFactory"
+    },
+    "name": "com.google.protobuf.ExtensionRegistry",
+    "methods": [
+      {
+        "name": "getEmptyRegistry",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.grpc.NameResolverRegistry"
+    },
+    "name": "io.grpc.internal.DnsNameResolverProvider"
+  },
+  {
+    "condition": {
+      "typeReachable": "io.grpc.LoadBalancerRegistry"
+    },
+    "name": "io.grpc.internal.PickFirstLoadBalancerProvider"
+  },
+  {
+    "condition": {
+      "typeReachable": "io.grpc.netty.ProtocolNegotiators$GrpcNegotiationHandler"
+    },
+    "name": "io.grpc.netty.AbstractNettyHandler",
+    "methods": [
+      {
+        "name": "channelActive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "exceptionCaught",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Throwable"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.grpc.netty.ProtocolNegotiators$GrpcNegotiationHandler"
+    },
+    "name": "io.grpc.netty.NettyClientHandler",
+    "methods": [
+      {
+        "name": "channelInactive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "close",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "write",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object",
+          "io.netty.channel.ChannelPromise"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.grpc.netty.ProtocolNegotiators$ProtocolNegotiationHandler"
+    },
+    "name": "io.grpc.netty.ProtocolNegotiators$GrpcNegotiationHandler",
+    "methods": [
+      {
+        "name": "userEventTriggered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.channel.DefaultChannelPipeline"
+    },
+    "name": "io.grpc.netty.ProtocolNegotiators$ProtocolNegotiationHandler",
+    "methods": [
+      {
+        "name": "userEventTriggered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.channel.DefaultChannelPipeline"
+    },
+    "name": "io.grpc.netty.ProtocolNegotiators$WaitUntilActiveHandler",
+    "methods": [
+      {
+        "name": "channelActive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.channel.DefaultChannelPipeline"
+    },
+    "name": "io.grpc.netty.WriteBufferingAndExceptionHandler",
+    "methods": [
+      {
+        "name": "channelInactive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelRead",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      },
+      {
+        "name": "close",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "connect",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.net.SocketAddress",
+          "java.net.SocketAddress",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "exceptionCaught",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Throwable"
+        ]
+      },
+      {
+        "name": "flush",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "write",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object",
+          "io.netty.channel.ChannelPromise"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.buffer.AbstractByteBufAllocator"
+    },
+    "name": "io.netty.buffer.AbstractByteBufAllocator",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.util.internal.ReferenceCountUpdater"
+    },
+    "name": "io.netty.buffer.AbstractReferenceCountedByteBuf",
+    "fields": [
+      {
+        "name": "refCnt"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.channel.DefaultChannelPipeline"
+    },
+    "name": "io.netty.channel.ChannelDuplexHandler",
+    "methods": [
+      {
+        "name": "bind",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.net.SocketAddress",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "close",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "connect",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.net.SocketAddress",
+          "java.net.SocketAddress",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "deregister",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "disconnect",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "flush",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "read",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "write",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object",
+          "io.netty.channel.ChannelPromise"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.grpc.netty.ProtocolNegotiators$ProtocolNegotiationHandler"
+    },
+    "name": "io.netty.channel.ChannelInboundHandlerAdapter",
+    "methods": [
+      {
+        "name": "channelActive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelInactive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelRead",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      },
+      {
+        "name": "channelReadComplete",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelWritabilityChanged",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "exceptionCaught",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Throwable"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.channel.DefaultChannelHandlerContext"
+    },
+    "name": "io.netty.channel.ChannelInboundHandlerAdapter",
+    "methods": [
+      {
+        "name": "channelRegistered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelUnregistered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.channel.DefaultChannelPipeline"
+    },
+    "name": "io.netty.channel.ChannelInboundHandlerAdapter",
+    "methods": [
+      {
+        "name": "channelActive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelInactive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelRead",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      },
+      {
+        "name": "channelReadComplete",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelWritabilityChanged",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "exceptionCaught",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Throwable"
+        ]
+      },
+      {
+        "name": "userEventTriggered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.channel.DefaultChannelPipeline$HeadContext"
+    },
+    "name": "io.netty.channel.DefaultChannelPipeline$HeadContext",
+    "methods": [
+      {
+        "name": "bind",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.net.SocketAddress",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "channelActive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelInactive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelRead",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      },
+      {
+        "name": "channelReadComplete",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelRegistered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelUnregistered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelWritabilityChanged",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "close",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "connect",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.net.SocketAddress",
+          "java.net.SocketAddress",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "deregister",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "disconnect",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "exceptionCaught",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Throwable"
+        ]
+      },
+      {
+        "name": "flush",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "read",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "userEventTriggered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      },
+      {
+        "name": "write",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object",
+          "io.netty.channel.ChannelPromise"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.channel.DefaultChannelPipeline$TailContext"
+    },
+    "name": "io.netty.channel.DefaultChannelPipeline$TailContext",
+    "methods": [
+      {
+        "name": "channelActive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelInactive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelRead",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      },
+      {
+        "name": "channelReadComplete",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelRegistered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelUnregistered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelWritabilityChanged",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "exceptionCaught",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Throwable"
+        ]
+      },
+      {
+        "name": "userEventTriggered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.channel.ReflectiveChannelFactory"
+    },
+    "name": "io.netty.channel.socket.nio.NioSocketChannel",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.grpc.netty.ProtocolNegotiators$GrpcNegotiationHandler"
+    },
+    "name": "io.netty.handler.codec.ByteToMessageDecoder",
+    "methods": [
+      {
+        "name": "channelRead",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      },
+      {
+        "name": "userEventTriggered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.grpc.netty.ProtocolNegotiators$GrpcNegotiationHandler"
+    },
+    "name": "io.netty.handler.codec.http2.Http2ConnectionHandler",
+    "methods": [
+      {
+        "name": "bind",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.net.SocketAddress",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "channelReadComplete",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelWritabilityChanged",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "connect",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.net.SocketAddress",
+          "java.net.SocketAddress",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "deregister",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "disconnect",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "io.netty.channel.ChannelPromise"
+        ]
+      },
+      {
+        "name": "flush",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "read",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.util.ReferenceCountUtil"
+    },
+    "name": "io.netty.util.ReferenceCountUtil",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueColdProducerFields"
+    },
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueColdProducerFields",
+    "fields": [
+      {
+        "name": "producerLimit"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueConsumerFields"
+    },
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueConsumerFields",
+    "fields": [
+      {
+        "name": "consumerIndex"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueProducerFields"
+    },
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueProducerFields",
+    "fields": [
+      {
+        "name": "producerIndex"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueConsumerIndexField"
+    },
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueConsumerIndexField",
+    "fields": [
+      {
+        "name": "consumerIndex"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueProducerIndexField"
+    },
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueProducerIndexField",
+    "fields": [
+      {
+        "name": "producerIndex"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueProducerLimitField"
+    },
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueProducerLimitField",
+    "fields": [
+      {
+        "name": "producerLimit"
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "io.grpc.LoadBalancerRegistry"
+    },
+    "name": "io.grpc.util.SecretRoundRobinLoadBalancerProvider$Provider"
+  },
+  {
+    "name": "io.github.honhimw.nacos.api.naming.pojo.Instance",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "getClusterName",
+        "parameterTypes": []
+      },
+      {
+        "name": "getInstanceHeartBeatInterval",
+        "parameterTypes": []
+      },
+      {
+        "name": "getInstanceHeartBeatTimeOut",
+        "parameterTypes": []
+      },
+      {
+        "name": "getInstanceId",
+        "parameterTypes": []
+      },
+      {
+        "name": "getInstanceIdGenerator",
+        "parameterTypes": []
+      },
+      {
+        "name": "getIp",
+        "parameterTypes": []
+      },
+      {
+        "name": "getIpDeleteTimeout",
+        "parameterTypes": []
+      },
+      {
+        "name": "getMetadata",
+        "parameterTypes": []
+      },
+      {
+        "name": "getPort",
+        "parameterTypes": []
+      },
+      {
+        "name": "getServiceName",
+        "parameterTypes": []
+      },
+      {
+        "name": "getWeight",
+        "parameterTypes": []
+      },
+      {
+        "name": "isEnabled",
+        "parameterTypes": []
+      },
+      {
+        "name": "isEphemeral",
+        "parameterTypes": []
+      },
+      {
+        "name": "isHealthy",
+        "parameterTypes": []
+      },
+      {
+        "name": "setClusterName",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setEnabled",
+        "parameterTypes": [
+          "boolean"
+        ]
+      },
+      {
+        "name": "setEphemeral",
+        "parameterTypes": [
+          "boolean"
+        ]
+      },
+      {
+        "name": "setHealthy",
+        "parameterTypes": [
+          "boolean"
+        ]
+      },
+      {
+        "name": "setInstanceId",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setIp",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setMetadata",
+        "parameterTypes": [
+          "java.util.Map"
+        ]
+      },
+      {
+        "name": "setPort",
+        "parameterTypes": [
+          "int"
+        ]
+      },
+      {
+        "name": "setServiceName",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setWeight",
+        "parameterTypes": [
+          "double"
+        ]
+      }
+    ]
+  }
+]

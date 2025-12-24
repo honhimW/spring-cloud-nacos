@@ -4,7 +4,6 @@ plugins {
 	id 'io.github.honhimw.buildConfig'
 }
 
-version = '0.0.1'
 description = 'Nacos Client Lite, remove useless code.'
 
 dependencies {

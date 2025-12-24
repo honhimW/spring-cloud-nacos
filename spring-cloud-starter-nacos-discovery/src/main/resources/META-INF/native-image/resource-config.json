@@ -1,0 +1,55 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "condition": {
+          "typeReachable": "io.github.honhimw.nacos.client.config.filter.impl.ConfigFilterChainManager"
+        },
+        "pattern": "\\QMETA-INF/services/io.github.honhimw.nacos.api.config.filter.IConfigFilter\\E"
+      },
+      {
+        "condition": {
+          "typeReachable": "io.github.honhimw.nacos.common.remote.PayloadRegistry"
+        },
+        "pattern": "\\QMETA-INF/services/io.github.honhimw.nacos.api.remote.Payload\\E"
+      },
+      {
+        "condition": {
+          "typeReachable": "io.github.honhimw.nacos.client.config.impl.ConfigTransportClient"
+        },
+        "pattern": "\\QMETA-INF/services/io.github.honhimw.nacos.plugin.auth.spi.client.AbstractClientAuthService\\E"
+      },
+      {
+        "condition": {
+          "typeReachable": "io.grpc.LoadBalancerRegistry"
+        },
+        "pattern": "\\QMETA-INF/services/io.grpc.LoadBalancerProvider\\E"
+      },
+      {
+        "condition": {
+          "typeReachable": "io.grpc.ManagedChannelRegistry"
+        },
+        "pattern": "\\QMETA-INF/services/io.grpc.ManagedChannelProvider\\E"
+      },
+      {
+        "condition": {
+          "typeReachable": "io.grpc.NameResolverRegistry"
+        },
+        "pattern": "\\QMETA-INF/services/io.grpc.NameResolverProvider\\E"
+      },
+      {
+        "condition": {
+          "typeReachable": "io.github.honhimw.nacos.common.utils.VersionUtils"
+        },
+        "pattern": "\\Qnacos-version.txt\\E"
+      },
+      {
+        "condition": {
+          "typeReachable": "io.github.honhimw.nacos.common.utils.ResourceUtils"
+        },
+        "pattern": "\\Qnacos_default_setting.properties\\E"
+      }
+    ]
+  },
+  "bundles": []
+}
