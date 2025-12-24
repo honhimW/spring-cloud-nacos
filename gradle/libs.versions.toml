@@ -1,5 +1,6 @@
 [versions]
 version = "2025.1.0.0"
+
 slf4j = "2.0.17"
 jspecify = "1.0.0"
 
@@ -9,8 +10,6 @@ spring-cloud-commons-dependencies = "5.0.0"
 
 grpc = "1.77.0"
 protobuf-java = "4.33.2"
-
-nacos-client = "3.0.3"
 
 lombok = "1.18.42"
 jetbrains-annotations = "26.0.2-1"

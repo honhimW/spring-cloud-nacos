@@ -66,7 +66,16 @@ class PublishCfgPlugin implements Plugin<Project> {
 
     String getLatestVersion(String artifactId) {
         def url = "https://repo1.maven.org/maven2/io/github/honhimw/${artifactId}/maven-metadata.xml"
-        def response = project.uri(url).toURL().openStream().withCloseable { stream -> return stream.bytes }
+		def connection = url.toURL().openConnection()
+		connection.setConnectTimeout(5000)
+		connection.setReadTimeout(5000)
+		if (connection instanceof HttpURLConnection) {
+			def httpConn = (HttpURLConnection) connection
+			if (httpConn.responseCode == 404) {
+				return ''
+			}
+		}
+		def response = connection.inputStream.withCloseable { stream -> stream.bytes }
         def xmlContent = new XmlParser().parseText(new String(response, StandardCharsets.UTF_8))
         def latestVersion = xmlContent?.versioning?.latest?.text()
         return latestVersion
