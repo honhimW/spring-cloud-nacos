@@ -16,11 +16,11 @@
 
 package io.github.honhimw.nacos.api.config.model;
 
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -40,8 +40,9 @@ class ConfigHistoryInfoTest {
     @BeforeEach
     void setUp() {
         createTime = System.currentTimeMillis();
-        mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.build();
         basicInfo = new ConfigHistoryBasicInfo();
         detailInfo = new ConfigHistoryDetailInfo();
         modifyTime = System.currentTimeMillis();
@@ -74,13 +75,13 @@ class ConfigHistoryInfoTest {
     }
     
     @Test
-    public void testBasicInfoSerialize() throws JsonProcessingException {
+    public void testBasicInfoSerialize() {
         String json = mapper.writeValueAsString(basicInfo);
         assertJsonContainBasicInfos(json);
     }
     
     @Test
-    public void testBasicInfoDeserialize() throws JsonProcessingException {
+    public void testBasicInfoDeserialize() {
         String json = "{\"id\":\"1\",\"namespaceId\":\"testNs\",\"groupName\":\"testGroup\",\"dataId\":\"testDataId\","
                 + "\"md5\":\"testMd5\",\"type\":\"text\",\"appName\":\"testApp\",\"createTime\":%s,\"modifyTime\":%s,"
                 + "\"srcIp\":\"1.1.1.1\",\"srcUser\":\"testCreateUser\",\"opType\":\"I\",\"publishType\":\"formal\"}";
@@ -89,14 +90,14 @@ class ConfigHistoryInfoTest {
     }
     
     @Test
-    public void testDetailInfoSerialize() throws JsonProcessingException {
+    public void testDetailInfoSerialize() {
         String json = mapper.writeValueAsString(detailInfo);
         assertJsonContainBasicInfos(json);
         asserJsonContainDetailInfos(json);
     }
     
     @Test
-    public void testDetailInfoDeserialize() throws JsonProcessingException {
+    public void testDetailInfoDeserialize() {
         String json = "{\"id\":\"1\",\"namespaceId\":\"testNs\",\"groupName\":\"testGroup\",\"dataId\":\"testDataId\","
                 + "\"md5\":\"testMd5\",\"type\":\"text\",\"appName\":\"testApp\",\"createTime\":%s,\"modifyTime\":%s,"
                 + "\"srcIp\":\"1.1.1.1\",\"srcUser\":\"testCreateUser\",\"opType\":\"I\",\"publishType\":\"formal\","

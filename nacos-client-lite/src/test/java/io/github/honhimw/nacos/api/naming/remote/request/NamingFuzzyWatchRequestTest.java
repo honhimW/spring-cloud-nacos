@@ -17,11 +17,11 @@
 package io.github.honhimw.nacos.api.naming.remote.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -42,13 +42,14 @@ class NamingFuzzyWatchRequestTest {
     
     @BeforeAll
     static void setUp() throws Exception {
-        mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.build();
     }
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         NamingFuzzyWatchRequest request = new NamingFuzzyWatchRequest(GROUP_KEY_PATTERN, WATCH_TYPE);
         request.setNamespace(NAMESPACE);
         Set<String> receivedGroupKeys = new HashSet<>();
@@ -67,7 +68,7 @@ class NamingFuzzyWatchRequestTest {
     }
     
     @Test
-    void testDeserialize() throws JsonProcessingException {
+    void testDeserialize() {
         String json = "{\"headers\":{},\"initializing\":true,\"namespace\":\"namespace\",\"groupKeyPattern\":\"groupKeyPattern\","
                 + "\"receivedGroupKeys\":[\"key1\",\"key2\"],\"watchType\":\"watchType\",\"module\":\"naming\"}";
         NamingFuzzyWatchRequest actual = mapper.readValue(json, NamingFuzzyWatchRequest.class);

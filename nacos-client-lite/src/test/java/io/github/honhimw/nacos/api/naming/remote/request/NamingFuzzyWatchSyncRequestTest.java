@@ -16,13 +16,13 @@
 
 package io.github.honhimw.nacos.api.naming.remote.request;
 
-import io.github.honhimw.nacos.api.naming.remote.request.NamingFuzzyWatchSyncRequest.Context;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
+import io.github.honhimw.nacos.api.naming.remote.request.NamingFuzzyWatchSyncRequest.Context;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -45,13 +45,14 @@ class NamingFuzzyWatchSyncRequestTest {
     
     @BeforeAll
     static void setUp() throws Exception {
-        mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.build();
     }
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         Set<Context> contexts = new HashSet<>();
         Context context = Context.build(SERVICE_KEY, CHANGED_TYPE);
         contexts.add(context);
@@ -72,7 +73,7 @@ class NamingFuzzyWatchSyncRequestTest {
     }
     
     @Test
-    void testDeserialize() throws JsonProcessingException {
+    void testDeserialize() {
         String json = "{\"headers\":{},\"groupKeyPattern\":\"groupKeyPattern\",\"contexts\":[{\"serviceKey\":\"serviceKey\","
                 + "\"changedType\":\"changedType\"}],\"totalBatch\":2,\"currentBatch\":1,\"syncType\":\"syncType\",\"module\":\"naming\"}";
         NamingFuzzyWatchSyncRequest actual = mapper.readValue(json, NamingFuzzyWatchSyncRequest.class);

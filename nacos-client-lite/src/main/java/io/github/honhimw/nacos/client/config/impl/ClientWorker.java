@@ -645,7 +645,8 @@ public class ClientWorker implements Closeable {
 						LOGGER.info("Trying to shutdown rpc client {}", entry.getKey());
 
 						try {
-							entry.getValue().shutdown();
+							RpcClientFactory.destroyClient(entry.getKey());
+//							entry.getValue().shutdown();
 						} catch (NacosException nacosException) {
 							nacosException.printStackTrace();
 						}

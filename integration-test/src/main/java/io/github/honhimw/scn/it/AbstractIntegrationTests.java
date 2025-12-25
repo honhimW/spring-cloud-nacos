@@ -1,4 +1,4 @@
-package io.github.honhimw.scn;
+package io.github.honhimw.scn.it;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -10,6 +10,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.testcontainers.containers.GenericContainer;
 
 import java.util.Map;
 
@@ -22,6 +23,8 @@ public abstract class AbstractIntegrationTests {
 	protected SpringApplicationBuilder appBuilder = new SpringApplicationBuilder(Config.class)
 		.web(WebApplicationType.NONE);
 
+	protected GenericContainer<?> container;
+
 	protected final void withProperties(Map<?, ?> properties) {
 		appBuilder.properties(TestUtils.properties2Pairs(properties));
 	}
@@ -30,8 +33,15 @@ public abstract class AbstractIntegrationTests {
 		appBuilder.properties(TestUtils.yaml2Pairs(yaml));
 	}
 
-	protected void setUp() {
+	protected void setUp() throws Exception {
+		container = TestUtils.testContainers();
+		container.start();
+	}
 
+	protected void tearDown() throws Exception {
+		if (container != null) {
+			container.stop();
+		}
 	}
 
 	@Test
@@ -41,6 +51,8 @@ public abstract class AbstractIntegrationTests {
 		SpringApplication app = appBuilder.build();
 		ConfigurableApplicationContext context = app.run();
 		run(context);
+		context.close();
+		tearDown();
 	}
 
 	protected abstract void run(ConfigurableApplicationContext context) throws Exception;

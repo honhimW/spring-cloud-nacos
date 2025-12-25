@@ -1,5 +1,7 @@
 rootProject.name = 'spring-cloud-nacos'
 include 'spring-cloud-starter-nacos-config'
 include 'spring-cloud-starter-nacos-discovery'
-include 'spring-cloud-nacos-core'
 include 'nacos-client-lite'
+
+include 'integration-test'
+include 'spring-cloud-nacos-core'

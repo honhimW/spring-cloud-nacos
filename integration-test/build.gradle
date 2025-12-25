@@ -1,0 +1,16 @@
+dependencies {
+	using platform(libs.spring.boot.dependencies.get())
+	using platform(libs.spring.cloud.dependencies.get())
+	using platform(libs.spring.cloud.commons.dependencies.get())
+
+	api 'org.springframework.boot:spring-boot-starter-test'
+	api 'org.springframework.boot:spring-boot-starter-web'
+	api 'org.testcontainers:testcontainers'
+	api 'org.testcontainers:testcontainers-junit-jupiter'
+	api libs.slf4j.api
+	api libs.lombok
+
+	annotationProcessor libs.lombok
+
+	runtimeOnly libs.logback.classic
+}

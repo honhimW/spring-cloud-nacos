@@ -35,7 +35,7 @@ public class NacosConfigManager {
 
 	private final NacosConfigProperties nacosConfigProperties;
 
-	public NacosConfigManager(NacosConfigProperties nacosConfigProperties) {
+	private NacosConfigManager(NacosConfigProperties nacosConfigProperties) {
 		this.nacosConfigProperties = nacosConfigProperties;
 	}
 

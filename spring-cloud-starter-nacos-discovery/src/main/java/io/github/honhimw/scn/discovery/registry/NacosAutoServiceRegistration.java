@@ -16,7 +16,7 @@
 
 package io.github.honhimw.scn.discovery.registry;
 
-import io.github.honhimw.scn.discovery.event.NacosDiscoveryInfoChangedEvent;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration;
@@ -24,7 +24,6 @@ import org.springframework.cloud.client.serviceregistry.AutoServiceRegistrationP
 import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.cloud.client.serviceregistry.ServiceRegistry;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.event.EventListener;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
@@ -32,25 +31,19 @@ import org.springframework.util.StringUtils;
  * @author xiaojing
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  */
-public class NacosAutoServiceRegistration
-		extends AbstractAutoServiceRegistration<Registration> {
+public class NacosAutoServiceRegistration extends AbstractAutoServiceRegistration<@NonNull Registration> {
 
 	private static final Logger log = LoggerFactory
 			.getLogger(NacosAutoServiceRegistration.class);
 
-	private NacosRegistration registration;
+	private final NacosRegistration registration;
 
 	public NacosAutoServiceRegistration(ApplicationContext context,
-			ServiceRegistry<Registration> serviceRegistry,
+			ServiceRegistry<@NonNull Registration> serviceRegistry,
 			AutoServiceRegistrationProperties autoServiceRegistrationProperties,
 			NacosRegistration registration) {
 		super(context, serviceRegistry, autoServiceRegistrationProperties);
 		this.registration = registration;
-	}
-
-	@Deprecated
-	public void setPort(int port) {
-		getPort().set(port);
 	}
 
 	@Override
@@ -105,13 +98,4 @@ public class NacosAutoServiceRegistration
 		return !StringUtils.hasText(appName) ? super.getAppName() : appName;
 	}
 
-	@EventListener
-	public void onNacosDiscoveryInfoChangedEvent(NacosDiscoveryInfoChangedEvent event) {
-		restart();
-	}
-
-	private void restart() {
-		this.stop();
-		this.start();
-	}
 }

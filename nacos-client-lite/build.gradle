@@ -22,6 +22,9 @@ dependencies {
 	implementation 'io.prometheus:simpleclient'
 	implementation 'org.yaml:snakeyaml'
 	implementation 'io.micrometer:micrometer-core'
+
+	testImplementation 'org.springframework:spring-test'
+	testImplementation 'org.mockito:mockito-junit-jupiter'
 }
 
 protobuf {

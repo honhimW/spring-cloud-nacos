@@ -17,11 +17,11 @@
 package io.github.honhimw.nacos.api.naming.remote.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import static io.github.honhimw.nacos.api.common.Constants.FUZZY_WATCH_RESOURCE_CHANGED;
 import static io.github.honhimw.nacos.api.common.Constants.Naming.NAMING_MODULE;
@@ -38,13 +38,14 @@ class NamingFuzzyWatchChangeNotifyRequestTest {
     
     @BeforeAll
     static void setUp() throws Exception {
-        mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.build();
     }
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         NamingFuzzyWatchChangeNotifyRequest request = new NamingFuzzyWatchChangeNotifyRequest(SERVICE_KEY, CHANGED_TYPE);
         String json = mapper.writeValueAsString(request);
         assertTrue(json.contains("\"serviceKey\":\"" + SERVICE_KEY + "\""));
@@ -54,7 +55,7 @@ class NamingFuzzyWatchChangeNotifyRequestTest {
     }
     
     @Test
-    void testDeserialize() throws JsonProcessingException {
+    void testDeserialize() {
         String json = "{\"headers\":{},\"serviceKey\":\"serviceKey\",\"changedType\":\"changedType\","
                 + "\"syncType\":\"FUZZY_WATCH_RESOURCE_CHANGED\",\"module\":\"naming\"}";
         NamingFuzzyWatchChangeNotifyRequest actual = mapper.readValue(json, NamingFuzzyWatchChangeNotifyRequest.class);

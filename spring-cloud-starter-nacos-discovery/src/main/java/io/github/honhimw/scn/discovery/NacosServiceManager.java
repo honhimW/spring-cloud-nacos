@@ -32,9 +32,13 @@ public class NacosServiceManager {
 
 	private static final Logger log = LoggerFactory.getLogger(NacosServiceManager.class);
 
-	private NacosDiscoveryProperties nacosDiscoveryProperties;
+	private final NacosDiscoveryProperties nacosDiscoveryProperties;
 
 	private volatile NamingService namingService;
+
+	public NacosServiceManager(NacosDiscoveryProperties nacosDiscoveryProperties) {
+		this.nacosDiscoveryProperties = nacosDiscoveryProperties;
+	}
 
 	public NamingService getNamingService() {
 		if (Objects.isNull(this.namingService)) {
@@ -49,15 +53,6 @@ public class NacosServiceManager {
 			buildNamingService(properties);
 		}
 		return namingService;
-	}
-
-	public boolean isNacosDiscoveryInfoChanged(
-			NacosDiscoveryProperties currentNacosDiscoveryPropertiesCache) {
-		if (Objects.isNull(this.nacosDiscoveryProperties)
-				|| this.nacosDiscoveryProperties.equals(currentNacosDiscoveryPropertiesCache)) {
-			return false;
-		}
-		return true;
 	}
 
 	private NamingService buildNamingService(Properties properties) {
@@ -87,7 +82,4 @@ public class NacosServiceManager {
 		}
 	}
 
-	public void setNacosDiscoveryProperties(NacosDiscoveryProperties nacosDiscoveryProperties) {
-		this.nacosDiscoveryProperties = nacosDiscoveryProperties;
-	}
 }

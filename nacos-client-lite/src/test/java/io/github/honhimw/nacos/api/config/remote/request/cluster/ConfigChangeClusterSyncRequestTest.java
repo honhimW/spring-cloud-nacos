@@ -18,7 +18,6 @@ package io.github.honhimw.nacos.api.config.remote.request.cluster;
 
 import io.github.honhimw.nacos.api.common.Constants;
 import io.github.honhimw.nacos.api.config.remote.request.BasedConfigRequestTest;
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -49,7 +48,7 @@ class ConfigChangeClusterSyncRequestTest extends BasedConfigRequestTest {
     
     @Override
     @Test
-    public void testSerialize() throws JsonProcessingException {
+    public void testSerialize() {
         String json = mapper.writeValueAsString(configChangeClusterSyncRequest);
         assertTrue(json.contains("\"module\":\"" + Constants.Config.CONFIG_MODULE));
         assertTrue(json.contains("\"dataId\":\"" + DATA_ID));
@@ -65,7 +64,7 @@ class ConfigChangeClusterSyncRequestTest extends BasedConfigRequestTest {
     
     @Override
     @Test
-    public void testDeserialize() throws JsonProcessingException {
+    public void testDeserialize() {
         String json =
                 "{\"headers\":{\"header1\":\"test_header1\"},\"requestId\":\"ece89111-3c42-4055-aca4-c95e16ec564b\",\"dataId\":\"test_data\","
                         + "\"group\":\"group\",\"tenant\":\"test_tenant\","

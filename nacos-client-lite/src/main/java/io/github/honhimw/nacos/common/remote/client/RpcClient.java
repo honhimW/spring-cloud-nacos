@@ -425,7 +425,7 @@ public abstract class RpcClient implements Closeable {
     public void shutdown() throws NacosException {
         LOGGER.info("Shutdown rpc client, set status to shutdown");
         rpcClientStatus.set(RpcClientStatus.SHUTDOWN);
-        LOGGER.info("Shutdown client event executor " + clientEventExecutor);
+		LOGGER.info("Shutdown client event executor {}", clientEventExecutor);
         if (clientEventExecutor != null) {
             clientEventExecutor.shutdownNow();
         }

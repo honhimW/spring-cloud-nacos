@@ -18,7 +18,6 @@ package io.github.honhimw.nacos.api.config.remote.request;
 
 import io.github.honhimw.nacos.api.common.Constants;
 import io.github.honhimw.nacos.api.config.remote.request.ConfigFuzzyWatchSyncRequest.Context;
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -39,7 +38,7 @@ class ConfigFuzzyWatchSyncRequestTest extends BasedConfigRequestTest {
     
     @Override
     @Test
-    public void testSerialize() throws JsonProcessingException {
+    public void testSerialize() {
         Set<Context> contexts = new HashSet<>();
         Context context = Context.build(GROUP_KEY, CHANGED_TYPE);
         contexts.add(context);
@@ -63,7 +62,7 @@ class ConfigFuzzyWatchSyncRequestTest extends BasedConfigRequestTest {
     
     @Override
     @Test
-    public void testDeserialize() throws JsonProcessingException {
+    public void testDeserialize() {
         String json = "{\"headers\":{\"header1\":\"test_header1\"},\"groupKeyPattern\":\"test.*\","
                 + "\"syncType\":\"" + Constants.FUZZY_WATCH_INIT_NOTIFY + "\",\"totalBatch\":2,\"currentBatch\":1,"
                 + "\"contexts\":[{\"groupKey\":\"test-group-key\",\"changedType\":\"ADD\"}],\"module\":\"config\"}";

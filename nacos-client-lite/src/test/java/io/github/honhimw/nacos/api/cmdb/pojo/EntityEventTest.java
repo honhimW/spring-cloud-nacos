@@ -17,27 +17,29 @@
 package io.github.honhimw.nacos.api.cmdb.pojo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import tools.jackson.core.JsonProcessingException;
 import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.json.JsonMapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EntityEventTest {
     
-    ObjectMapper mapper = new ObjectMapper();
+    ObjectMapper mapper;
     
     @BeforeEach
     void setUp() throws Exception {
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.build();
     }
     
     @Test
-    void testSerialization() throws JsonProcessingException {
+    void testSerialization() {
         EntityEvent entity = new EntityEvent();
         entity.setEntityName("test-entity");
         entity.setEntityType("CMDB");
@@ -50,7 +52,7 @@ class EntityEventTest {
     }
     
     @Test
-    void testDeserialization() throws JsonProcessingException {
+    void testDeserialization() {
         String json = "{\"type\":\"ENTITY_REMOVE\",\"entityName\":\"test-entity\",\"entityType\":\"CMDB\"}";
         EntityEvent entity = mapper.readValue(json, EntityEvent.class);
         assertEquals("test-entity", entity.getEntityName());

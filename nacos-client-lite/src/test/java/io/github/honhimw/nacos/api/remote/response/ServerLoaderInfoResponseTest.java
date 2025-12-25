@@ -17,27 +17,29 @@
 package io.github.honhimw.nacos.api.remote.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ServerLoaderInfoResponseTest {
     
-    ObjectMapper mapper = new ObjectMapper();
+    ObjectMapper mapper;
     
     @BeforeEach
     void setUp() throws Exception {
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.build();
     }
     
     @Test
-    void testSerialization() throws JsonProcessingException {
+    void testSerialization() {
         ServerLoaderInfoResponse response = new ServerLoaderInfoResponse();
         response.putMetricsValue("test", "testValue");
         String actual = mapper.writeValueAsString(response);
@@ -46,7 +48,7 @@ class ServerLoaderInfoResponseTest {
     }
     
     @Test
-    void testDeserialization() throws JsonProcessingException {
+    void testDeserialization() {
         String json = "{\"resultCode\":200,\"errorCode\":0,\"loaderMetrics\":{\"test\":\"testValue\"},\"success\":true}";
         ServerLoaderInfoResponse response = mapper.readValue(json, ServerLoaderInfoResponse.class);
         assertEquals(1, response.getLoaderMetrics().size());

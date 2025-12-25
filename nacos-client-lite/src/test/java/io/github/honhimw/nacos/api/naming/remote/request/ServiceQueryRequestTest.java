@@ -17,7 +17,6 @@
 package io.github.honhimw.nacos.api.naming.remote.request;
 
 import io.github.honhimw.nacos.api.common.Constants;
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ServiceQueryRequestTest extends BasedNamingRequestTest {
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         ServiceQueryRequest request = new ServiceQueryRequest(NAMESPACE, SERVICE, GROUP);
         request.setCluster(Constants.DEFAULT_CLUSTER_NAME);
         String json = mapper.writeValueAsString(request);
@@ -37,7 +36,7 @@ class ServiceQueryRequestTest extends BasedNamingRequestTest {
     }
     
     @Test
-    void testDeserialize() throws JsonProcessingException {
+    void testDeserialize() {
         String json = "{\"headers\":{},\"namespace\":\"namespace\",\"serviceName\":\"service\",\"groupName\":\"group\","
                 + "\"cluster\":\"DEFAULT\",\"healthyOnly\":true,\"udpPort\":0,\"module\":\"naming\"}";
         ServiceQueryRequest actual = mapper.readValue(json, ServiceQueryRequest.class);

@@ -16,7 +16,6 @@
 
 package io.github.honhimw.nacos.api.naming.remote.request;
 
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
 import static io.github.honhimw.nacos.api.common.Constants.Naming.NAMING_MODULE;
@@ -26,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ServiceListRequestTest extends BasedNamingRequestTest {
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         ServiceListRequest request = new ServiceListRequest(NAMESPACE, GROUP, 1, 10);
         request.setSelector("label");
         String json = mapper.writeValueAsString(request);
@@ -39,7 +38,7 @@ class ServiceListRequestTest extends BasedNamingRequestTest {
     }
     
     @Test
-    void testDeserialize() throws JsonProcessingException {
+    void testDeserialize() {
         String json = "{\"headers\":{},\"namespace\":\"namespace\",\"serviceName\":\"\",\"groupName\":\"group\","
                 + "\"pageNo\":1,\"pageSize\":10,\"selector\":\"label\",\"module\":\"naming\"}";
         ServiceListRequest actual = mapper.readValue(json, ServiceListRequest.class);

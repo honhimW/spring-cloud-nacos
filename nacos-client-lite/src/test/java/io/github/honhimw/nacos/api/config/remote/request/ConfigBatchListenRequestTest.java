@@ -17,7 +17,6 @@
 package io.github.honhimw.nacos.api.config.remote.request;
 
 import io.github.honhimw.nacos.api.common.Constants;
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,7 +26,7 @@ class ConfigBatchListenRequestTest extends BasedConfigRequestTest {
     
     @Override
     @Test
-    public void testSerialize() throws JsonProcessingException {
+    public void testSerialize() {
         ConfigBatchListenRequest configBatchListenRequest = new ConfigBatchListenRequest();
         configBatchListenRequest.putAllHeader(HEADERS);
         configBatchListenRequest.addConfigListenContext(GROUP, DATA_ID, TENANT, MD5);
@@ -42,7 +41,7 @@ class ConfigBatchListenRequestTest extends BasedConfigRequestTest {
     
     @Override
     @Test
-    public void testDeserialize() throws JsonProcessingException {
+    public void testDeserialize() {
         String json = "{\"headers\":{\"header1\":\"test_header1\"},\"listen\":true,"
                 + "\"configListenContexts\":[{\"group\":\"group\",\"md5\":\"test_MD5\","
                 + "\"dataId\":\"test_data\",\"tenant\":\"test_tenant\"}],\"module\":\"config\"}";

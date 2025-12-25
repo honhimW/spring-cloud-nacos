@@ -17,13 +17,13 @@
 package io.github.honhimw.nacos.api.naming.pojo;
 
 import io.github.honhimw.nacos.api.utils.StringUtils;
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -32,10 +32,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ServiceInfoTest {
     
@@ -45,13 +42,14 @@ class ServiceInfoTest {
     
     @BeforeEach
     void setUp() throws Exception {
-        mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.build();
         serviceInfo = new ServiceInfo("G@@testName", "testClusters");
     }
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         String actual = mapper.writeValueAsString(serviceInfo);
         assertTrue(actual.contains("\"name\":\"G@@testName\""));
         assertTrue(actual.contains("\"clusters\":\"testClusters\""));
@@ -180,7 +178,7 @@ class ServiceInfoTest {
     }
     
     @Test
-    void testSetAndGet() throws JsonProcessingException {
+    void testSetAndGet() {
         serviceInfo.setReachProtectionThreshold(true);
         serviceInfo.setJsonFromServer(mapper.writeValueAsString(serviceInfo));
         ServiceInfo actual = mapper.readValue(serviceInfo.getJsonFromServer(), ServiceInfo.class);

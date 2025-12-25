@@ -1,5 +1,7 @@
-package io.github.honhimw.scn;
+package io.github.honhimw.scn.it;
 
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.wait.strategy.Wait;
 import org.yaml.snakeyaml.Yaml;
 
 import java.util.Map;
@@ -8,6 +10,14 @@ import java.util.stream.Stream;
 /// @author honhimW
 /// @since 2025-12-24
 public class TestUtils {
+
+	public static GenericContainer<?> testContainers() {
+		return new GenericContainer<>("qingpan/rnacos:v0.7.10-alpine")
+			.withExposedPorts(8848, 9848, 10848)
+			.withEnv("RNACOS_INIT_ADMIN_USERNAME", "admin")
+			.withEnv("RNACOS_INIT_ADMIN_PASSWORD", "admin")
+			.waitingFor(Wait.forLogMessage(".*rnacos started.*", 1));
+	}
 
 	public static String[] properties2Pairs(Map<?, ?> properties) {
 		return properties.entrySet().stream().flatMap(entry -> {

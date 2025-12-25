@@ -178,8 +178,15 @@ public class NacosConfigDataLocationResolver
 		List<?> springConfigImportProperties = resolverContext.getBinder()
 			.bind("spring.config.import", List.class).get();
 		if (!springConfigImportProperties.isEmpty() && !bootstrapContext.isRegistered(NacosConfigManager.class)) {
-			bootstrapContext.register(NacosConfigManager.class,
-				BootstrapRegistry.InstanceSupplier.of(NacosConfigManager.getInstance(properties)));
+			NacosConfigManager configManager = NacosConfigManager.getInstance(properties);
+			bootstrapContext.register(NacosConfigManager.class, BootstrapRegistry.InstanceSupplier.of(configManager));
+//			bootstrapContext.addCloseListener(event -> {
+//				try {
+//					configManager.destroy();
+//				} catch (Exception e) {
+//					log.warn("Unable to destroy bootstrap NacosConfigManager.", e);
+//				}
+//			});
 		}
 	}
 

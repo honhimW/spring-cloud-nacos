@@ -17,11 +17,11 @@
 package io.github.honhimw.nacos.api.cmdb.pojo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import tools.jackson.core.JsonProcessingException;
 import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.Collections;
 
@@ -30,16 +30,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EntityTest {
     
-    ObjectMapper mapper = new ObjectMapper();
+    ObjectMapper mapper;
     
     @BeforeEach
     void setUp() throws Exception {
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.build();
     }
     
     @Test
-    void testSerialization() throws JsonProcessingException {
+    void testSerialization() {
         Entity entity = new Entity();
         entity.setName("test-entity");
         entity.setType(PreservedEntityTypes.ip.name());
@@ -51,7 +53,7 @@ class EntityTest {
     }
     
     @Test
-    void testDeserialization() throws JsonProcessingException {
+    void testDeserialization() {
         String json = "{\"type\":\"service\",\"name\":\"test-entity\",\"labels\":{\"test-label-key\":\"test-label-value\"}}";
         Entity entity = mapper.readValue(json, Entity.class);
         assertEquals("test-entity", entity.getName());

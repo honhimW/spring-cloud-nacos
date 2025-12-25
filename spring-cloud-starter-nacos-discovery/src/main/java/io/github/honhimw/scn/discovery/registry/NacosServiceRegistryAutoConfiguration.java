@@ -31,6 +31,7 @@ import org.springframework.cloud.client.serviceregistry.AutoServiceRegistrationP
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 import java.util.List;
 
@@ -74,6 +75,12 @@ public class NacosServiceRegistryAutoConfiguration {
 			NacosRegistration registration) {
 		return new NacosAutoServiceRegistration(context, registry,
 				autoServiceRegistrationProperties, registration);
+	}
+
+	@Bean
+	@DependsOn("nacosAutoServiceRegistration")
+	public NacosDiscoveryInfoChangedListener nacosDiscoveryInfoChangedListener(NacosAutoServiceRegistration nacosAutoServiceRegistration) {
+		return new NacosDiscoveryInfoChangedListener(nacosAutoServiceRegistration);
 	}
 
 	@Bean

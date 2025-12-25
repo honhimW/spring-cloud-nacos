@@ -16,11 +16,12 @@
 
 package io.github.honhimw.nacos.api.naming.pojo.maintainer;
 
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
 
@@ -35,8 +36,10 @@ class ClientSummaryInfoTest {
     
     @BeforeEach
     void setUp() throws Exception {
-        mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.build();
         clientSummaryInfo = new ClientSummaryInfo();
         clientSummaryInfo.setClientId("clientId");
         clientSummaryInfo.setEphemeral(true);
@@ -50,7 +53,7 @@ class ClientSummaryInfoTest {
     }
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         String json = mapper.writeValueAsString(clientSummaryInfo);
         assertTrue(json.contains("\"clientId\":\"clientId\""));
         assertTrue(json.contains("\"ephemeral\":true"));

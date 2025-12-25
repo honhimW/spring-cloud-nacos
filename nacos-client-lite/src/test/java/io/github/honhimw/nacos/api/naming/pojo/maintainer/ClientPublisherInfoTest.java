@@ -16,11 +16,11 @@
 
 package io.github.honhimw.nacos.api.naming.pojo.maintainer;
 
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
 
@@ -35,8 +35,9 @@ class ClientPublisherInfoTest {
     
     @BeforeEach
     void setUp() throws Exception {
-        mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.build();
         clientPublisherInfo = new ClientPublisherInfo();
         clientPublisherInfo.setClientId("clientId");
         clientPublisherInfo.setIp("1.1.1.1");
@@ -45,7 +46,7 @@ class ClientPublisherInfoTest {
     }
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         String json = mapper.writeValueAsString(clientPublisherInfo);
         assertTrue(json.contains("\"clientId\":\"clientId\""));
         assertTrue(json.contains("\"ip\":\"1.1.1.1\""));

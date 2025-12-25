@@ -17,11 +17,11 @@
 package io.github.honhimw.nacos.api.naming.remote.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -31,13 +31,14 @@ class NamingFuzzyWatchChangeNotifyResponseTest {
     
     @BeforeAll
     static void setUp() throws Exception {
-        mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.build();
     }
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         NamingFuzzyWatchChangeNotifyResponse response = new NamingFuzzyWatchChangeNotifyResponse();
         response.setResultCode(200);
         String json = mapper.writeValueAsString(response);
@@ -46,7 +47,7 @@ class NamingFuzzyWatchChangeNotifyResponseTest {
     }
     
     @Test
-    void testDeserialize() throws JsonProcessingException {
+    void testDeserialize() {
         String json = "{\"resultCode\":200,\"errorCode\":0,\"success\":true}";
         NamingFuzzyWatchChangeNotifyResponse response = mapper.readValue(json, NamingFuzzyWatchChangeNotifyResponse.class);
         assertTrue(response.isSuccess());

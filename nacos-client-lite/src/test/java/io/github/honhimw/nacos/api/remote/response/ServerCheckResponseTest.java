@@ -17,27 +17,29 @@
 package io.github.honhimw.nacos.api.remote.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ServerCheckResponseTest {
     
-    ObjectMapper mapper = new ObjectMapper();
+    ObjectMapper mapper;
     
     @BeforeEach
     void setUp() throws Exception {
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.build();
     }
     
     @Test
-    void testSerialization() throws JsonProcessingException {
+    void testSerialization() {
         ServerCheckResponse response = new ServerCheckResponse("35643245_1.1.1.1_3306", false);
         String actual = mapper.writeValueAsString(response);
         assertTrue(actual.contains("\"connectionId\":\"35643245_1.1.1.1_3306\""));
@@ -45,7 +47,7 @@ class ServerCheckResponseTest {
     }
     
     @Test
-    void testDeserialization() throws JsonProcessingException {
+    void testDeserialization() {
         String json = "{\"resultCode\":200,\"errorCode\":0,\"connectionId\":\"35643245_1.1.1.1_3306\",\"success\":true,"
                 + "\"supportAbilityNegotiation\":true}";
         ServerCheckResponse response = mapper.readValue(json, ServerCheckResponse.class);

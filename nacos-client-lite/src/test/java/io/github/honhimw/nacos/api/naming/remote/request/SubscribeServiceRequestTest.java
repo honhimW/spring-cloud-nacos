@@ -16,17 +16,14 @@
 
 package io.github.honhimw.nacos.api.naming.remote.request;
 
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SubscribeServiceRequestTest extends BasedNamingRequestTest {
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         SubscribeServiceRequest request = new SubscribeServiceRequest(NAMESPACE, GROUP, SERVICE, "", true);
         String json = mapper.writeValueAsString(request);
         checkSerializeBasedInfo(json);
@@ -35,7 +32,7 @@ class SubscribeServiceRequestTest extends BasedNamingRequestTest {
     }
     
     @Test
-    void testDeserialize() throws JsonProcessingException {
+    void testDeserialize() {
         String json = "{\"headers\":{},\"namespace\":\"namespace\",\"serviceName\":\"service\",\"groupName\":\"group\","
                 + "\"subscribe\":false,\"clusters\":\"aa,bb\",\"module\":\"naming\"}";
         SubscribeServiceRequest actual = mapper.readValue(json, SubscribeServiceRequest.class);

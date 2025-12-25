@@ -23,6 +23,7 @@ import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.MapperFeature;
 import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,15 +59,16 @@ public abstract class BasedConfigRequestTest {
     
     @BeforeAll
     public static void setUp() throws Exception {
-        mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        mapper.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
-    }
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY)
+			.build();
+	}
     
-    public abstract void testSerialize() throws JsonProcessingException;
+    public abstract void testSerialize();
     
-    public abstract void testDeserialize() throws JsonProcessingException;
+    public abstract void testDeserialize();
     
     protected String injectRequestUuId(Request request) {
         String uuid = UUID.randomUUID().toString();

@@ -16,18 +16,14 @@
 
 package io.github.honhimw.nacos.api.naming.pojo.healthcheck.impl;
 
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HttpTest {
     
@@ -57,7 +53,7 @@ class HttpTest {
     }
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         http.setHeaders("x:a|y:");
         http.setPath("/x");
         String actual = objectMapper.writeValueAsString(http);

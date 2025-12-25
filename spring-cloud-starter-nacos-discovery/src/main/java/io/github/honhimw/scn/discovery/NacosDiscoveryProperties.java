@@ -18,7 +18,6 @@ package io.github.honhimw.scn.discovery;
 
 import io.github.honhimw.nacos.api.naming.PreservedMetadataKeys;
 import io.github.honhimw.nacos.client.naming.utils.UtilAndComs;
-import io.github.honhimw.scn.discovery.event.NacosDiscoveryInfoChangedEvent;
 import io.github.honhimw.scn.discovery.util.InetIPv6Utils;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -27,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.commons.util.InetUtils;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.core.env.Environment;
 import org.springframework.util.StringUtils;
 
@@ -229,12 +227,6 @@ public class NacosDiscoveryProperties {
 	@Autowired
 	private Environment environment;
 
-	@Autowired
-	private NacosServiceManager nacosServiceManager;
-
-	@Autowired
-	private ApplicationEventPublisher applicationEventPublisher;
-
 	@PostConstruct
 	public void init() throws Exception {
 
@@ -305,11 +297,6 @@ public class NacosDiscoveryProperties {
 		}
 
 		this.overrideFromEnv(environment);
-		if (nacosServiceManager.isNacosDiscoveryInfoChanged(this)) {
-			applicationEventPublisher
-					.publishEvent(new NacosDiscoveryInfoChangedEvent(this));
-		}
-		nacosServiceManager.setNacosDiscoveryProperties(this);
 	}
 
 	public String getEndpoint() {

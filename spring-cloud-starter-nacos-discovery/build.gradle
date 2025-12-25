@@ -10,12 +10,20 @@ dependencies {
 	using platform(libs.spring.cloud.commons.dependencies.get())
 
 	api project(':spring-cloud-nacos-core')
+
+	compileOnly 'org.springframework.retry:spring-retry'
 	compileOnly 'org.springframework.boot:spring-boot-starter-actuator'
+	compileOnly 'org.springframework.boot:spring-boot-starter-aspectj'
+	compileOnly 'org.springframework.boot:spring-boot-health'
+	compileOnly 'org.springframework.boot:spring-boot-actuator-autoconfigure'
+	compileOnly 'org.springframework.boot:spring-boot-starter-actuator'
+	compileOnly 'org.springframework.cloud:spring-cloud-commons'
+
 	compileOnly 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
 	compileOnly 'org.springframework.cloud:spring-cloud-config-server'
 	compileOnly 'io.projectreactor:reactor-core'
 
-	testRuntimeOnly libs.logback.classic
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-web'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+	testImplementation project(':integration-test')
 }

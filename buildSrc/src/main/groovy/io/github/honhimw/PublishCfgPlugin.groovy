@@ -5,6 +5,11 @@ import com.vanniktech.maven.publish.MavenPublishPlugin
 import groovy.xml.XmlParser
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.component.SoftwareComponent
+import org.gradle.api.plugins.JavaLibraryPlugin
+import org.gradle.api.plugins.JavaPlatformPlugin
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.plugins.signing.SigningPlugin
 
 import java.nio.charset.StandardCharsets
@@ -20,6 +25,53 @@ class PublishCfgPlugin implements Plugin<Project> {
         project.plugins.apply MavenPublishPlugin
 
         project.afterEvaluate {
+
+			project.extensions.configure(PublishingExtension) { publishing ->
+				def group = project.group.toString()
+				def name = project.name
+				def ver = project.version.toString()
+				def packageKind
+				SoftwareComponent target
+
+				project.plugins.withType(JavaLibraryPlugin).configureEach {
+					target = project.components.java
+					packageKind = 'jar'
+				}
+
+				project.plugins.withType(JavaPlatformPlugin).configureEach {
+					target = project.components.javaPlatform
+					if (name.contains('bom')) {
+						packageKind = 'pom'
+					} else {
+						packageKind = 'jar'
+					}
+				}
+
+				publishing.repositories {
+					it.maven {
+						it.name = 'tmp'
+						it.url = project.layout.buildDirectory.dir("/publishing-repository").get().asFile.toURI()
+					}
+				}
+
+				publishing.publications {publication ->
+					publication.create('library', MavenPublication) { mavenPublication ->
+						mavenPublication.versionMapping {vms ->
+							vms.allVariants {
+								it.fromResolutionResult()
+							}
+						}
+						mavenPublication.groupId = group
+						mavenPublication.artifactId = name
+						mavenPublication.version = ver
+						mavenPublication.pom {
+							it.packaging = packageKind
+						}
+						mavenPublication.from target
+					}
+				}
+			}
+
             project.extensions.configure(MavenPublishBaseExtension) {
                 it.publishToMavenCentral false
                 it.signAllPublications()
@@ -52,15 +104,23 @@ class PublishCfgPlugin implements Plugin<Project> {
                     }
                 }
             }
+
         }
 
         project.tasks.register('deployIfAbsent') {
             it.group = 'deploy'
-            def latestVersion = getLatestVersion(project.name)
-            println "module: ${project.name}, current: ${project.version}, latest: ${latestVersion}"
-            if (project.version != latestVersion) {
-                it.dependsOn ":${project.name}:publishAllPublicationsToMavenCentralRepository"
-            }
+			it.dependsOn ":${project.name}:publishLibraryPublicationToMavenCentralRepository"
+
+			it.onlyIf {
+				def latestVersion = getLatestVersion(project.name)
+				println "module: ${project.name}, current: ${project.version}, latest: ${latestVersion}"
+				return project.version != latestVersion
+			}
+        }
+
+        project.tasks.register('doGenerate') {
+            it.group = 'deploy'
+			it.dependsOn ":${project.name}:publishLibraryPublicationToTmpRepository"
         }
     }
 

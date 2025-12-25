@@ -18,7 +18,6 @@ package io.github.honhimw.nacos.api.naming.remote.request;
 
 import io.github.honhimw.nacos.api.naming.pojo.Instance;
 import io.github.honhimw.nacos.api.naming.remote.NamingRemoteConstants;
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PersistentInstanceRequestTest extends BasedNamingRequestTest {
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         PersistentInstanceRequest request = new PersistentInstanceRequest(NAMESPACE, SERVICE, GROUP,
                 NamingRemoteConstants.REGISTER_INSTANCE, new Instance());
         String json = mapper.writeValueAsString(request);
@@ -37,7 +36,7 @@ class PersistentInstanceRequestTest extends BasedNamingRequestTest {
     }
     
     @Test
-    void testDeserialize() throws JsonProcessingException {
+    void testDeserialize() {
         String json = "{\"headers\":{},\"namespace\":\"namespace\",\"serviceName\":\"service\",\"groupName\":\"group\","
                 + "\"type\":\"deregisterInstance\",\"instance\":{\"port\":0,\"weight\":1.0,\"healthy\":true,"
                 + "\"enabled\":true,\"ephemeral\":true,\"metadata\":{},\"instanceIdGenerator\":\"simple\","

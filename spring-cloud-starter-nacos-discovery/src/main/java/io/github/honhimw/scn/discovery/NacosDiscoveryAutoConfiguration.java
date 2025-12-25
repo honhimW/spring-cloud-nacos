@@ -16,8 +16,16 @@
 
 package io.github.honhimw.scn.discovery;
 
+import io.github.honhimw.scn.discovery.loadbalancer.ConditionalOnLoadBalancerNacos;
+import io.github.honhimw.scn.discovery.loadbalancer.DefaultLoadBalancerAlgorithm;
+import io.github.honhimw.scn.discovery.loadbalancer.LoadBalancerAlgorithm;
+import io.github.honhimw.scn.discovery.loadbalancer.NacosLoadBalancerClientConfiguration;
+import io.github.honhimw.scn.discovery.util.InetIPv6Utils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.ConditionalOnDiscoveryEnabled;
+import org.springframework.cloud.commons.util.InetUtilsProperties;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,12 +35,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnDiscoveryEnabled
 @ConditionalOnNacosDiscoveryEnabled
+@EnableConfigurationProperties(NacosDiscoveryProperties.class)
 public class NacosDiscoveryAutoConfiguration {
 
 	@Bean
+	public NacosServiceManager nacosServiceManager(NacosDiscoveryProperties nacosDiscoveryProperties) {
+		return new NacosServiceManager(nacosDiscoveryProperties);
+	}
+
+	@Bean
 	@ConditionalOnMissingBean
-	public NacosDiscoveryProperties nacosProperties() {
-		return new NacosDiscoveryProperties();
+	public InetIPv6Utils inetIPv6Utils(InetUtilsProperties properties) {
+		return new InetIPv6Utils(properties);
 	}
 
 	@Bean
@@ -41,6 +55,19 @@ public class NacosDiscoveryAutoConfiguration {
 			NacosDiscoveryProperties discoveryProperties,
 			NacosServiceManager nacosServiceManager) {
 		return new NacosServiceDiscovery(discoveryProperties, nacosServiceManager);
+	}
+
+	@Configuration(proxyBeanMethods = false)
+	@ConditionalOnLoadBalancerNacos
+	@ConditionalOnNacosDiscoveryEnabled
+	@LoadBalancerClients(defaultConfiguration = NacosLoadBalancerClientConfiguration.class)
+	protected static class NacosLoadBalancerConfiguration {
+
+		@Bean
+		public LoadBalancerAlgorithm defaultLoadBalancerAlgorithm() {
+			return new DefaultLoadBalancerAlgorithm();
+		}
+
 	}
 
 }

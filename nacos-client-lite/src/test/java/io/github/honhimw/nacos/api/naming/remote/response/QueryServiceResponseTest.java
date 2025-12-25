@@ -16,13 +16,13 @@
 
 package io.github.honhimw.nacos.api.naming.remote.response;
 
-import io.github.honhimw.nacos.api.naming.pojo.ServiceInfo;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
+import io.github.honhimw.nacos.api.naming.pojo.ServiceInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -33,13 +33,14 @@ class QueryServiceResponseTest {
     
     @BeforeAll
     static void setUp() throws Exception {
-        mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		mapper = JsonMapper.builder()
+			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+			.changeDefaultPropertyInclusion(value -> value.withValueInclusion(JsonInclude.Include.NON_NULL))
+			.build();
     }
     
     @Test
-    void testSerializeSuccessResponse() throws JsonProcessingException {
+    void testSerializeSuccessResponse() {
         QueryServiceResponse response = QueryServiceResponse.buildSuccessResponse(new ServiceInfo());
         String json = mapper.writeValueAsString(response);
         assertTrue(json.contains("\"serviceInfo\":{"));
@@ -49,7 +50,7 @@ class QueryServiceResponseTest {
     }
     
     @Test
-    void testSerializeFailResponse() throws JsonProcessingException {
+    void testSerializeFailResponse() {
         QueryServiceResponse response = QueryServiceResponse.buildFailResponse("test");
         String json = mapper.writeValueAsString(response);
         assertTrue(json.contains("\"resultCode\":500"));
@@ -59,7 +60,7 @@ class QueryServiceResponseTest {
     }
     
     @Test
-    void testDeserialize() throws JsonProcessingException {
+    void testDeserialize() {
         String json = "{\"resultCode\":200,\"errorCode\":0,\"serviceInfo\":{\"cacheMillis\":1000,\"hosts\":[],"
                 + "\"lastRefTime\":0,\"checksum\":\"\",\"allIPs\":false,\"reachProtectionThreshold\":false,"
                 + "\"valid\":true},\"success\":true}";

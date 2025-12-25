@@ -16,16 +16,13 @@
 
 package io.github.honhimw.nacos.api.naming.pojo.healthcheck.impl;
 
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class MysqlTest {
     
@@ -43,7 +40,7 @@ class MysqlTest {
     }
     
     @Test
-    void testSerialize() throws JsonProcessingException {
+    void testSerialize() {
         String actual = objectMapper.writeValueAsString(mysql);
         assertTrue(actual.contains("\"user\":\"user\""));
         assertTrue(actual.contains("\"type\":\"MYSQL\""));
