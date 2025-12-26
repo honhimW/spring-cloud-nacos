@@ -3,14 +3,12 @@ package io.github.honhimw.scn.config;
 import io.github.honhimw.nacos.api.PropertyKeyConst;
 import io.github.honhimw.nacos.api.config.ConfigService;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.validation.annotation.Validated;
 
 import java.util.*;
 
 /// @author honhimW
 /// @since 2025-12-22
 @ConfigurationProperties(NacosConfigProperties.PREFIX)
-@Validated
 public class NacosConfigProperties {
 
 	/**

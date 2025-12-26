@@ -40,7 +40,7 @@ public class NacosReactiveDiscoveryClient implements ReactiveDiscoveryClient {
 	private static final Logger log = LoggerFactory
 			.getLogger(NacosReactiveDiscoveryClient.class);
 
-	private NacosServiceDiscovery serviceDiscovery;
+	private final NacosServiceDiscovery serviceDiscovery;
 
 	@Value("${spring.cloud.nacos.discovery.failure-tolerance-enabled:false}")
 	private boolean failureToleranceEnabled;

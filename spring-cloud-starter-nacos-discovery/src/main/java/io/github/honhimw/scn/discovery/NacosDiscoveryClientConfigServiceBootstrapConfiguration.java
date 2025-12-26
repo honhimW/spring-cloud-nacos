@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-package io.github.honhimw.scn.discovery.configclient;
+package io.github.honhimw.scn.discovery;
 
-import io.github.honhimw.scn.discovery.NacosDiscoveryAutoConfiguration;
-import io.github.honhimw.scn.discovery.NacosDiscoveryClientConfiguration;
-import io.github.honhimw.scn.discovery.reactive.NacosReactiveDiscoveryClientConfiguration;
+import io.github.honhimw.scn.discovery.reactive.NacosReactiveDiscoveryClientAutoConfiguration;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -33,8 +31,11 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass(ConfigServicePropertySourceLocator.class)
 @ConditionalOnProperty(value = "spring.cloud.config.discovery.enabled", matchIfMissing = false)
 @Configuration(proxyBeanMethods = false)
-@ImportAutoConfiguration({ NacosDiscoveryAutoConfiguration.class, NacosDiscoveryClientConfiguration.class,
-		NacosReactiveDiscoveryClientConfiguration.class })
+@ImportAutoConfiguration({
+	NacosDiscoveryAutoConfiguration.class,
+	NacosDiscoveryClientAutoConfiguration.class,
+	NacosReactiveDiscoveryClientAutoConfiguration.class,
+})
 public class NacosDiscoveryClientConfigServiceBootstrapConfiguration {
 
 }

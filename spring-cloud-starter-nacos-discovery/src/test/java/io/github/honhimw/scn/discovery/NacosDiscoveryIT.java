@@ -1,9 +1,14 @@
 package io.github.honhimw.scn.discovery;
 
+import io.github.honhimw.nacos.api.NacosFactory;
+import io.github.honhimw.nacos.api.naming.NamingService;
+import io.github.honhimw.nacos.api.naming.pojo.Instance;
 import io.github.honhimw.scn.it.AbstractIntegrationTest;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.List;
 import java.util.Map;
 
 /// @author honhimW
@@ -24,6 +29,8 @@ public class NacosDiscoveryIT extends AbstractIntegrationTest {
 
 	@Override
 	protected void run(ConfigurableApplicationContext context) throws Exception {
-		Thread.sleep(100_000);
+		NamingService namingService = NacosFactory.createNamingService(nacos.serverAddr());
+		List<Instance> allInstances = namingService.getAllInstances("nacos-starter-test");
+		Assertions.assertEquals(1, allInstances.size());
 	}
 }

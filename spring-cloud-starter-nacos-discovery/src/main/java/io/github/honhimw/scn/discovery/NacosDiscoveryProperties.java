@@ -295,6 +295,11 @@ public class NacosDiscoveryProperties {
 			}
 		}
 
+		String configServerPrefix = environment.getProperty("spring.cloud.config.server.prefix");
+		if (StringUtils.hasText(configServerPrefix) && !StringUtils.hasText(getMetadata().get("configPath"))) {
+			metadata.put("configPath", configServerPrefix);
+		}
+
 		this.overrideFromEnv(environment);
 	}
 

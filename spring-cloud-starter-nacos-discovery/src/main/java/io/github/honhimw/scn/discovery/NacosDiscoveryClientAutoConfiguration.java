@@ -16,8 +16,7 @@
 
 package io.github.honhimw.scn.discovery;
 
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.client.CommonsClientAutoConfiguration;
@@ -37,14 +36,15 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnDiscoveryEnabled
 @ConditionalOnBlockingDiscoveryEnabled
 @ConditionalOnNacosDiscoveryEnabled
-@AutoConfigureBefore({ SimpleDiscoveryClientAutoConfiguration.class,
-		CommonsClientAutoConfiguration.class })
-@AutoConfigureAfter(NacosDiscoveryAutoConfiguration.class)
-public class NacosDiscoveryClientConfiguration {
+@AutoConfiguration(
+	before = {SimpleDiscoveryClientAutoConfiguration.class, CommonsClientAutoConfiguration.class},
+	after = NacosDiscoveryAutoConfiguration.class
+)
+public class NacosDiscoveryClientAutoConfiguration {
 
 	@Bean
 	public DiscoveryClient nacosDiscoveryClient(
-			NacosServiceDiscovery nacosServiceDiscovery) {
+		NacosServiceDiscovery nacosServiceDiscovery) {
 		return new NacosDiscoveryClient(nacosServiceDiscovery);
 	}
 
@@ -56,7 +56,7 @@ public class NacosDiscoveryClientConfiguration {
 	@ConditionalOnMissingBean
 	@ConditionalOnProperty(value = "spring.cloud.nacos.discovery.watch.enabled", matchIfMissing = false)
 	public NacosWatch nacosWatch(NacosServiceManager nacosServiceManager,
-			NacosDiscoveryProperties nacosDiscoveryProperties) {
+								 NacosDiscoveryProperties nacosDiscoveryProperties) {
 		return new NacosWatch(nacosServiceManager, nacosDiscoveryProperties);
 	}
 

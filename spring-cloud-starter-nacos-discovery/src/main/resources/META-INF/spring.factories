@@ -1,2 +1,2 @@
 org.springframework.cloud.bootstrap.BootstrapConfiguration=\
-io.github.honhimw.scn.discovery.configclient.NacosDiscoveryClientConfigServiceBootstrapConfiguration
+io.github.honhimw.scn.discovery.NacosDiscoveryClientConfigServiceBootstrapConfiguration

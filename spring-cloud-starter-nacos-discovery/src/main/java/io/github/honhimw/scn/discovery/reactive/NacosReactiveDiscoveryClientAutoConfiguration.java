@@ -19,8 +19,7 @@ package io.github.honhimw.scn.discovery.reactive;
 import io.github.honhimw.scn.discovery.ConditionalOnNacosDiscoveryEnabled;
 import io.github.honhimw.scn.discovery.NacosDiscoveryAutoConfiguration;
 import io.github.honhimw.scn.discovery.NacosServiceDiscovery;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.client.ConditionalOnDiscoveryEnabled;
 import org.springframework.cloud.client.ConditionalOnReactiveDiscoveryEnabled;
@@ -36,15 +35,16 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnDiscoveryEnabled
 @ConditionalOnReactiveDiscoveryEnabled
 @ConditionalOnNacosDiscoveryEnabled
-@AutoConfigureAfter({ NacosDiscoveryAutoConfiguration.class,
-		ReactiveCompositeDiscoveryClientAutoConfiguration.class })
-@AutoConfigureBefore({ ReactiveCommonsClientAutoConfiguration.class })
-public class NacosReactiveDiscoveryClientConfiguration {
+@AutoConfiguration(
+	after = {NacosDiscoveryAutoConfiguration.class, ReactiveCompositeDiscoveryClientAutoConfiguration.class},
+	before = ReactiveCommonsClientAutoConfiguration.class
+)
+public class NacosReactiveDiscoveryClientAutoConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean
 	public NacosReactiveDiscoveryClient nacosReactiveDiscoveryClient(
-			NacosServiceDiscovery nacosServiceDiscovery) {
+		NacosServiceDiscovery nacosServiceDiscovery) {
 		return new NacosReactiveDiscoveryClient(nacosServiceDiscovery);
 	}
 

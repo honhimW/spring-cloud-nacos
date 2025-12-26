@@ -39,7 +39,7 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnNacosDiscoveryEnabled
 @AutoConfigureAfter(value = NacosDiscoveryAutoConfiguration.class,
 		name = "de.codecentric.boot.admin.server.cloud.config.AdminServerDiscoveryAutoConfiguration")
-public class NacosDiscoveryHeartBeatConfiguration {
+public class NacosDiscoveryHeartBeatAutoConfiguration {
 
 	/**
 	 * Nacos HeartBeat is no longer enabled by default .
