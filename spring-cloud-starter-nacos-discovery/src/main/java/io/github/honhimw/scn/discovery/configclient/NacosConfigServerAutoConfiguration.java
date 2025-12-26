@@ -32,7 +32,6 @@ import org.springframework.util.StringUtils;
  * @author JevonYang
  */
 @Configuration(proxyBeanMethods = false)
-@EnableConfigurationProperties
 @ConditionalOnClass({NacosDiscoveryProperties.class, ConfigServerProperties.class})
 public class NacosConfigServerAutoConfiguration {
 

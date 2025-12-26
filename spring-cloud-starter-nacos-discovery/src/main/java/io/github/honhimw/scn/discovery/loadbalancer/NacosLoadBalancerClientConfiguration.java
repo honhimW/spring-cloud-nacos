@@ -18,6 +18,7 @@ package io.github.honhimw.scn.discovery.loadbalancer;
 
 import io.github.honhimw.scn.discovery.NacosDiscoveryProperties;
 import io.github.honhimw.scn.discovery.util.InetIPv6Utils;
+import org.jspecify.annotations.NonNull;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -59,12 +60,13 @@ public class NacosLoadBalancerClientConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean
-	public ReactorLoadBalancer<ServiceInstance> nacosLoadBalancer(Environment environment,
-			LoadBalancerClientFactory loadBalancerClientFactory,
-			NacosDiscoveryProperties nacosDiscoveryProperties,
-			InetIPv6Utils inetIPv6Utils,
-			List<ServiceInstanceFilter> serviceInstanceFilters,
-			List<LoadBalancerAlgorithm> loadBalancerAlgorithms) {
+	public ReactorLoadBalancer<@NonNull ServiceInstance> nacosLoadBalancer(
+		Environment environment,
+		LoadBalancerClientFactory loadBalancerClientFactory,
+		NacosDiscoveryProperties nacosDiscoveryProperties,
+		InetIPv6Utils inetIPv6Utils,
+		List<ServiceInstanceFilter> serviceInstanceFilters,
+		List<LoadBalancerAlgorithm> loadBalancerAlgorithms) {
 		String name = environment.getProperty(LoadBalancerClientFactory.PROPERTY_NAME);
 		Map<String, LoadBalancerAlgorithm> loadBalancerAlgorithmMap = new HashMap<>();
 		loadBalancerAlgorithms.forEach(loadBalancerAlgorithm -> {
@@ -73,10 +75,10 @@ public class NacosLoadBalancerClientConfiguration {
 			}
 		});
 		return new NacosLoadBalancer(
-				loadBalancerClientFactory.getLazyProvider(name,
-						ServiceInstanceListSupplier.class),
-				name, nacosDiscoveryProperties, inetIPv6Utils,
-				serviceInstanceFilters, loadBalancerAlgorithmMap);
+			loadBalancerClientFactory.getLazyProvider(name,
+				ServiceInstanceListSupplier.class),
+			name, nacosDiscoveryProperties, inetIPv6Utils,
+			serviceInstanceFilters, loadBalancerAlgorithmMap);
 	}
 
 	@Configuration(proxyBeanMethods = false)
@@ -89,9 +91,9 @@ public class NacosLoadBalancerClientConfiguration {
 		@ConditionalOnMissingBean
 		@ConditionalOnProperty(value = "spring.cloud.loadbalancer.configurations", havingValue = "default", matchIfMissing = true)
 		public ServiceInstanceListSupplier discoveryClientServiceInstanceListSupplier(
-				ConfigurableApplicationContext context) {
+			ConfigurableApplicationContext context) {
 			return ServiceInstanceListSupplier.builder().withDiscoveryClient()
-					.build(context);
+				.build(context);
 		}
 
 		@Bean
@@ -99,9 +101,9 @@ public class NacosLoadBalancerClientConfiguration {
 		@ConditionalOnMissingBean
 		@ConditionalOnProperty(value = "spring.cloud.loadbalancer.configurations", havingValue = "zone-preference")
 		public ServiceInstanceListSupplier zonePreferenceDiscoveryClientServiceInstanceListSupplier(
-				ConfigurableApplicationContext context) {
+			ConfigurableApplicationContext context) {
 			return ServiceInstanceListSupplier.builder().withDiscoveryClient()
-					.withZonePreference().build(context);
+				.withZonePreference().build(context);
 		}
 
 	}
@@ -116,9 +118,9 @@ public class NacosLoadBalancerClientConfiguration {
 		@ConditionalOnMissingBean
 		@ConditionalOnProperty(value = "spring.cloud.loadbalancer.configurations", havingValue = "default", matchIfMissing = true)
 		public ServiceInstanceListSupplier discoveryClientServiceInstanceListSupplier(
-				ConfigurableApplicationContext context) {
+			ConfigurableApplicationContext context) {
 			return ServiceInstanceListSupplier.builder().withBlockingDiscoveryClient()
-					.build(context);
+				.build(context);
 		}
 
 		@Bean
@@ -126,9 +128,9 @@ public class NacosLoadBalancerClientConfiguration {
 		@ConditionalOnMissingBean
 		@ConditionalOnProperty(value = "spring.cloud.loadbalancer.configurations", havingValue = "zone-preference")
 		public ServiceInstanceListSupplier zonePreferenceDiscoveryClientServiceInstanceListSupplier(
-				ConfigurableApplicationContext context) {
+			ConfigurableApplicationContext context) {
 			return ServiceInstanceListSupplier.builder().withBlockingDiscoveryClient()
-					.withZonePreference().build(context);
+				.withZonePreference().build(context);
 		}
 	}
 }

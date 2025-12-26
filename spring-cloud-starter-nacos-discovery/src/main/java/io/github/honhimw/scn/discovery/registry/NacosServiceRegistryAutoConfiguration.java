@@ -40,7 +40,6 @@ import java.util.List;
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  */
 @Configuration(proxyBeanMethods = false)
-@EnableConfigurationProperties
 @ConditionalOnNacosDiscoveryEnabled
 @ConditionalOnProperty(value = "spring.cloud.service-registry.auto-registration.enabled",
 		matchIfMissing = true)

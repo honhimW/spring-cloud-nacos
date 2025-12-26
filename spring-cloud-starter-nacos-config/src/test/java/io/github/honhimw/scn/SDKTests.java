@@ -17,7 +17,7 @@ public class SDKTests {
 
 	@Test
 	void listener() throws Exception {
-		try (GenericContainer<?> container = TestUtils.testContainers()) {
+		try (GenericContainer<?> container = TestUtils.rNacosContainer()) {
 			container.start();
 			String host = container.getHost();
 			Integer mappedPort = container.getMappedPort(8848);

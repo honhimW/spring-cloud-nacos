@@ -3,29 +3,23 @@ package io.github.honhimw.scn;
 import io.github.honhimw.nacos.common.remote.client.grpc.GrpcConstants;
 import io.github.honhimw.scn.config.NacosConfigManager;
 import io.github.honhimw.scn.config.refresh.NacosContextRefresher;
-import io.github.honhimw.scn.it.AbstractIntegrationTests;
-import io.github.honhimw.scn.it.TestUtils;
+import io.github.honhimw.scn.it.AbstractIntegrationTest;
 import org.intellij.lang.annotations.Language;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.testcontainers.containers.GenericContainer;
 
 import java.util.Map;
 
 /// @author honhimW
 /// @since 2025-12-22
-public class NacosConfigIT extends AbstractIntegrationTests {
-
-	private GenericContainer<?> container;
+public class NacosConfigIT extends AbstractIntegrationTest {
 
 	@Override
-	protected void setUp() {
-		container = TestUtils.testContainers();
-		container.start();
-		String host = container.getHost();
-		Integer httpPort = container.getMappedPort(8848);
-		Integer grpcPort = container.getMappedPort(9848);
-		String serverAddr = "%s:%d".formatted(host, httpPort);
+	protected void setUp() throws Exception {
+		super.setUp();
+		int httpPort = nacos.httpPort();
+		int grpcPort = nacos.grpcPort();
+		String serverAddr = nacos.serverAddr();
 		int offset = grpcPort - httpPort;
 		System.setProperty(GrpcConstants.NACOS_SERVER_GRPC_PORT_OFFSET_KEY, String.valueOf(offset));
 		withProperties(Map.of(
@@ -39,8 +33,8 @@ public class NacosConfigIT extends AbstractIntegrationTests {
 
 	@Override
 	protected void tearDown() {
-		if (container != null) {
-			container.close();
+		if (nacos != null) {
+			nacos.close();
 		}
 	}
 

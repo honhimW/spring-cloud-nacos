@@ -249,7 +249,6 @@ public class NacosDiscoveryProperties {
 				if (ipType == null) {
 					ip = inetUtils.findFirstNonLoopbackHostInfo().getIpAddress();
 					String ipv6Addr = inetIPv6Utils.findIPv6Address();
-					metadata.put(IPV6, ipv6Addr);
 					if (ipv6Addr != null) {
 						metadata.put(IPV6, ipv6Addr);
 					}

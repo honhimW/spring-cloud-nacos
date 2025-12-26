@@ -22,6 +22,7 @@ import io.github.honhimw.nacos.api.naming.pojo.Instance;
 import io.github.honhimw.nacos.common.utils.StringUtils;
 import io.github.honhimw.scn.discovery.NacosDiscoveryProperties;
 import io.github.honhimw.scn.discovery.NacosServiceManager;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.serviceregistry.Registration;
@@ -37,7 +38,7 @@ import static org.springframework.util.ReflectionUtils.rethrowRuntimeException;
  * @author <a href="mailto:78552423@qq.com">eshun</a>
  * @author JAY
  */
-public class NacosServiceRegistry implements ServiceRegistry<Registration> {
+public class NacosServiceRegistry implements ServiceRegistry<@NonNull Registration> {
 
 	private static final String STATUS_UP = "UP";
 
