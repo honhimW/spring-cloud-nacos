@@ -18,7 +18,6 @@ package io.github.honhimw.nacos.api.config.remote.response;
 
 import io.github.honhimw.nacos.api.config.remote.request.BasedConfigRequestTest;
 import io.github.honhimw.nacos.api.remote.response.Response;
-import tools.jackson.core.JsonProcessingException;
 
 import java.util.UUID;
 
@@ -27,18 +26,18 @@ public abstract class BasedConfigResponseTest extends BasedConfigRequestTest {
     protected String requestId;
     
     @Override
-    public void testSerialize() throws JsonProcessingException {
+    public void testSerialize() {
     
     }
     
     @Override
-    public void testDeserialize() throws JsonProcessingException {
+    public void testDeserialize() {
     
     }
     
-    public abstract void testSerializeSuccessResponse() throws JsonProcessingException;
+    public abstract void testSerializeSuccessResponse();
     
-    public abstract void testSerializeFailResponse() throws JsonProcessingException;
+    public abstract void testSerializeFailResponse();
     
     protected String injectResponseUuId(Response response) {
         String uuid = UUID.randomUUID().toString();

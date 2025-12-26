@@ -17,7 +17,6 @@
 package io.github.honhimw.nacos.api.config.remote.response;
 
 import io.github.honhimw.nacos.api.remote.response.ResponseCode;
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -44,7 +43,7 @@ public class ClientConfigMetricResponseTest extends BasedConfigResponseTest {
     
     @Override
     @Test
-    public void testSerializeSuccessResponse() throws JsonProcessingException {
+    public void testSerializeSuccessResponse() {
         String json = mapper.writeValueAsString(clientConfigMetricResponse);
         assertTrue(json.contains("\"success\":" + Boolean.TRUE));
         assertTrue(json.contains("\"requestId\":\"" + requestId));
@@ -52,13 +51,13 @@ public class ClientConfigMetricResponseTest extends BasedConfigResponseTest {
     }
     
     @Override
-    public void testSerializeFailResponse() throws JsonProcessingException {
+    public void testSerializeFailResponse() {
     
     }
     
     @Override
     @Test
-    public void testDeserialize() throws JsonProcessingException {
+    public void testDeserialize() {
         String json = "{\"resultCode\":200,\"errorCode\":0,\"requestId\":\"6ef9237b-24f3-448a-87fc-713f18ee06a1\","
                 + "\"metrics\":{\"m1\":\"v1\",\"m2\":\"v2\"},\"success\":true}";
         ClientConfigMetricResponse actual = mapper.readValue(json, ClientConfigMetricResponse.class);

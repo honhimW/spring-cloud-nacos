@@ -18,7 +18,6 @@ package io.github.honhimw.nacos.api.config.remote.response.cluster;
 
 import io.github.honhimw.nacos.api.config.remote.response.BasedConfigResponseTest;
 import io.github.honhimw.nacos.api.remote.response.ResponseCode;
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +35,7 @@ public class ConfigChangeClusterSyncResponseTest extends BasedConfigResponseTest
     
     @Override
     @Test
-    public void testSerializeSuccessResponse() throws JsonProcessingException {
+    public void testSerializeSuccessResponse() {
         String json = mapper.writeValueAsString(configChangeClusterSyncResponse);
         assertTrue(json.contains("\"success\":" + Boolean.TRUE));
         assertTrue(json.contains("\"requestId\":\"" + requestId));
@@ -45,7 +44,7 @@ public class ConfigChangeClusterSyncResponseTest extends BasedConfigResponseTest
     }
     
     @Override
-    public void testSerializeFailResponse() throws JsonProcessingException {
+    public void testSerializeFailResponse() {
     
     }
 }

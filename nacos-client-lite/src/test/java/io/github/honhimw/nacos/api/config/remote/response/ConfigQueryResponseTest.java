@@ -17,7 +17,6 @@
 package io.github.honhimw.nacos.api.config.remote.response;
 
 import io.github.honhimw.nacos.api.remote.response.ResponseCode;
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -41,7 +40,7 @@ class ConfigQueryResponseTest extends BasedConfigResponseTest {
     
     @Override
     @Test
-    public void testSerializeSuccessResponse() throws JsonProcessingException {
+    public void testSerializeSuccessResponse() {
         String json = mapper.writeValueAsString(configQueryResponse);
         assertTrue(json.contains("\"success\":" + Boolean.TRUE));
         assertTrue(json.contains("\"requestId\":\"" + requestId));
@@ -55,7 +54,7 @@ class ConfigQueryResponseTest extends BasedConfigResponseTest {
     
     @Override
     @Test
-    public void testSerializeFailResponse() throws JsonProcessingException {
+    public void testSerializeFailResponse() {
         ConfigQueryResponse configQueryResponse = ConfigQueryResponse.buildFailResponse(500, "Fail");
         String json = mapper.writeValueAsString(configQueryResponse);
         assertTrue(json.contains("\"resultCode\":" + ResponseCode.FAIL.getCode()));
@@ -66,7 +65,7 @@ class ConfigQueryResponseTest extends BasedConfigResponseTest {
     
     @Override
     @Test
-    public void testDeserialize() throws JsonProcessingException {
+    public void testDeserialize() {
         String json = "{\"resultCode\":200,\"errorCode\":0,\"requestId\":\"2239753e-e682-441c-83cf-fb8129ca68a4\","
                 + "\"content\":\"success\",\"encryptedDataKey\":\"encryptedKey\",\"contentType\":\"text\",\"md5\":\"test_MD5\","
                 + "\"lastModified\":1111111,\"tag\":\"tag\",\"beta\":false,\"success\":true}\n";

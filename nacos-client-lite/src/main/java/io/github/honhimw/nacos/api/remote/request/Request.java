@@ -109,6 +109,11 @@ public abstract class Request implements Payload {
     public Map<String, String> getHeaders() {
         return headers;
     }
+
+	public void setHeaders(Map<String, String> headers) {
+		this.headers.clear();
+		this.headers.putAll(headers);
+	}
     
     public void clearHeaders() {
         this.headers.clear();

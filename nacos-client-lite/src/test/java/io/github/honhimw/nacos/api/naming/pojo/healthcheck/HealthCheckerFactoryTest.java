@@ -16,16 +16,13 @@
 
 package io.github.honhimw.nacos.api.naming.pojo.healthcheck;
 
-import io.github.honhimw.nacos.api.exception.runtime.NacosDeserializationException;
-import io.github.honhimw.nacos.api.exception.runtime.NacosSerializationException;
 import io.github.honhimw.nacos.api.naming.pojo.healthcheck.impl.Tcp;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import tools.jackson.core.exc.StreamReadException;
+import tools.jackson.databind.exc.InvalidDefinitionException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HealthCheckerFactoryTest {
     
@@ -77,7 +74,7 @@ class HealthCheckerFactoryTest {
     
     @Test
     void testSerializeFailure() {
-        assertThrows(NacosSerializationException.class, () -> {
+        assertThrows(InvalidDefinitionException.class, () -> {
             SelfDependHealthChecker selfDependHealthChecker = new SelfDependHealthChecker();
             System.out.println(HealthCheckerFactory.serialize(selfDependHealthChecker));
         });
@@ -85,7 +82,7 @@ class HealthCheckerFactoryTest {
     
     @Test
     void testDeserializeFailure() {
-        assertThrows(NacosDeserializationException.class, () -> {
+        assertThrows(StreamReadException.class, () -> {
             String errorString = "{\"type\"=\"TCP\"}";
             System.out.println(HealthCheckerFactory.deserialize(errorString));
         });

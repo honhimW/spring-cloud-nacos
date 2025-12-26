@@ -17,7 +17,6 @@
 package io.github.honhimw.nacos.api.config.remote.response;
 
 import io.github.honhimw.nacos.api.remote.response.ResponseCode;
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +34,7 @@ public class ConfigChangeNotifyResponseTest extends BasedConfigResponseTest {
     
     @Override
     @Test
-    public void testSerializeSuccessResponse() throws JsonProcessingException {
+    public void testSerializeSuccessResponse() {
         String json = mapper.writeValueAsString(configChangeNotifyResponse);
         assertTrue(json.contains("\"success\":" + Boolean.TRUE));
         assertTrue(json.contains("\"requestId\":\"" + requestId));
@@ -45,7 +44,7 @@ public class ConfigChangeNotifyResponseTest extends BasedConfigResponseTest {
     }
     
     @Override
-    public void testSerializeFailResponse() throws JsonProcessingException {
+    public void testSerializeFailResponse() {
     
     }
 }

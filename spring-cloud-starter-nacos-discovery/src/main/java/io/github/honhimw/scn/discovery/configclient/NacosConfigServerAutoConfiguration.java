@@ -21,7 +21,6 @@ import io.github.honhimw.scn.discovery.NacosDiscoveryProperties;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.config.server.config.ConfigServerProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;

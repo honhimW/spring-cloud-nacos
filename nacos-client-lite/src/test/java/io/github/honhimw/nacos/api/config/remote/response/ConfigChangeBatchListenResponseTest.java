@@ -17,7 +17,6 @@
 package io.github.honhimw.nacos.api.config.remote.response;
 
 import io.github.honhimw.nacos.api.remote.response.ResponseCode;
-import tools.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -37,7 +36,7 @@ class ConfigChangeBatchListenResponseTest extends BasedConfigResponseTest {
     
     @Override
     @Test
-    public void testSerializeSuccessResponse() throws JsonProcessingException {
+    public void testSerializeSuccessResponse() {
         String json = mapper.writeValueAsString(configChangeBatchListenResponse);
         assertTrue(json.contains("\"success\":" + Boolean.TRUE));
         assertTrue(json.contains("\"requestId\":\"" + requestId));
@@ -49,7 +48,7 @@ class ConfigChangeBatchListenResponseTest extends BasedConfigResponseTest {
     
     @Override
     @Test
-    public void testSerializeFailResponse() throws JsonProcessingException {
+    public void testSerializeFailResponse() {
         ConfigChangeBatchListenResponse configChangeBatchListenResponse = ConfigChangeBatchListenResponse.buildFailResponse(
                 "Fail");
         String json = mapper.writeValueAsString(configChangeBatchListenResponse);
@@ -61,7 +60,7 @@ class ConfigChangeBatchListenResponseTest extends BasedConfigResponseTest {
     
     @Override
     @Test
-    public void testDeserialize() throws JsonProcessingException {
+    public void testDeserialize() {
         String json = "{\"resultCode\":200,\"errorCode\":0,\"requestId\":\"061e36b0-c7bd-4fd0-950c-73b13ca1cb2f\","
                 + "\"changedConfigs\":[{\"group\":\"group\",\"dataId\":\"test_data\",\"tenant\":\"test_tenant\"}],\"success\":true}";
         ConfigChangeBatchListenResponse actual = mapper.readValue(json, ConfigChangeBatchListenResponse.class);

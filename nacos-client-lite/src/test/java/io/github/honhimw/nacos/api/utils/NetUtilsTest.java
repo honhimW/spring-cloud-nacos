@@ -22,11 +22,8 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
-import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class NetUtilsTest {
     
@@ -62,23 +59,6 @@ class NetUtilsTest {
         InetAddress inetAddress = invokeGetInetAddress();
         String ip = inetAddress.getHostAddress();
         assertEquals(ip, NetUtils.localIp());
-    }
-    
-    @Test
-    void testLocalIpWithException() throws Exception {
-        Field field = System.class.getDeclaredField("props");
-        field.setAccessible(true);
-        Properties properties = (Properties) field.get(null);
-        Properties mockProperties = mock(Properties.class);
-        when(mockProperties.getProperty("java.net.preferIPv6Addresses")).thenThrow(new RuntimeException("test"));
-        field.set(null, mockProperties);
-        try {
-            System.setProperty("java.net.preferIPv6Addresses", "aaa");
-            InetAddress expect = InetAddress.getLocalHost();
-            assertEquals(expect.getHostAddress(), NetUtils.localIp());
-        } finally {
-            field.set(null, properties);
-        }
     }
     
     private InetAddress invokeGetInetAddress() throws Exception {

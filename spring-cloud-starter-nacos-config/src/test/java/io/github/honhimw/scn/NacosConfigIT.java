@@ -17,16 +17,11 @@ public class NacosConfigIT extends AbstractIntegrationTest {
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		int httpPort = nacos.httpPort();
-		int grpcPort = nacos.grpcPort();
-		String serverAddr = nacos.serverAddr();
-		int offset = grpcPort - httpPort;
-		System.setProperty(GrpcConstants.NACOS_SERVER_GRPC_PORT_OFFSET_KEY, String.valueOf(offset));
 		withProperties(Map.of(
 			"spring.application.name", "nacos-starter-test",
 			"spring.config.import[0]", "optional:nacos:nacos-starter-test",
 			"spring.config.import[1]", "optional:nacos:extend-config",
-			"spring.cloud.nacos.config.server-addr", serverAddr,
+			"spring.cloud.nacos.config.server-addr", nacos.serverAddr(),
 			"spring.cloud.nacos.config.namespace", "public"
 		));
 	}
